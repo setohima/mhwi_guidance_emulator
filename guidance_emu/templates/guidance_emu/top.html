@@ -1,6 +1,7 @@
 {% extends 'guidance_emu/base.html' %}
 
 {% block content %}
+    
     <h3>カスタム強化したい武器の詳細を入力してください</h3>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ searchName }}

@@ -13,51 +13,51 @@ SET CHARACTER_SET_CONNECTION = utf8;
 --
 
 --
--- Data for Name: guidance_area; Type: TABLE DATA; Schema: setohima$Guidance; Owner: -
+-- Data for Name: Guidance_area; Type: TABLE DATA; Schema: setohima$Guidance; Owner: -
 --
 
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (42, '氷雪', 7, 6);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (41, '氷雪', 6, 6);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (40, '氷雪', 5, 6);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (39, '氷雪', 4, 6);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (38, '氷雪', 3, 6);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (37, '氷雪', 2, 6);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (36, '氷雪', 1, 6);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (35, '溶岩', 7, 5);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (34, '溶岩', 6, 5);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (33, '溶岩', 5, 5);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (32, '溶岩', 4, 5);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (31, '溶岩', 3, 5);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (30, '溶岩', 2, 5);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (29, '溶岩', 1, 5);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (28, '瘴気', 7, 4);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (27, '瘴気', 6, 4);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (26, '瘴気', 5, 4);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (25, '瘴気', 4, 4);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (24, '瘴気', 3, 4);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (23, '瘴気', 2, 4);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (22, '瘴気', 1, 4);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (21, '陸珊瑚', 7, 3);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (20, '陸珊瑚', 6, 3);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (19, '陸珊瑚', 5, 3);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (18, '陸珊瑚', 4, 3);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (17, '陸珊瑚', 3, 3);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (16, '陸珊瑚', 2, 3);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (15, '陸珊瑚', 1, 3);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (14, '荒地', 7, 2);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (13, '荒地', 6, 2);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (12, '荒地', 5, 2);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (11, '荒地', 4, 2);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (10, '荒地', 3, 2);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (9, '荒地', 2, 2);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (8, '荒地', 1, 2);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (7, '森林', 7, 1);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (6, '森林', 6, 1);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (5, '森林', 5, 1);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (4, '森林', 4, 1);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (3, '森林', 3, 1);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (2, '森林', 2, 1);
-INSERT INTO setohima$Guidance.guidance_area (id, name, level, kind) VALUES (1, '森林', 1, 1);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (42, '氷雪', 7, 6);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (41, '氷雪', 6, 6);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (40, '氷雪', 5, 6);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (39, '氷雪', 4, 6);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (38, '氷雪', 3, 6);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (37, '氷雪', 2, 6);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (36, '氷雪', 1, 6);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (35, '溶岩', 7, 5);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (34, '溶岩', 6, 5);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (33, '溶岩', 5, 5);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (32, '溶岩', 4, 5);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (31, '溶岩', 3, 5);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (30, '溶岩', 2, 5);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (29, '溶岩', 1, 5);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (28, '瘴気', 7, 4);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (27, '瘴気', 6, 4);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (26, '瘴気', 5, 4);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (25, '瘴気', 4, 4);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (24, '瘴気', 3, 4);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (23, '瘴気', 2, 4);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (22, '瘴気', 1, 4);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (21, '陸珊瑚', 7, 3);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (20, '陸珊瑚', 6, 3);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (19, '陸珊瑚', 5, 3);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (18, '陸珊瑚', 4, 3);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (17, '陸珊瑚', 3, 3);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (16, '陸珊瑚', 2, 3);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (15, '陸珊瑚', 1, 3);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (14, '荒地', 7, 2);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (13, '荒地', 6, 2);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (12, '荒地', 5, 2);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (11, '荒地', 4, 2);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (10, '荒地', 3, 2);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (9, '荒地', 2, 2);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (8, '荒地', 1, 2);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (7, '森林', 7, 1);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (6, '森林', 6, 1);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (5, '森林', 5, 1);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (4, '森林', 4, 1);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (3, '森林', 3, 1);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (2, '森林', 2, 1);
+INSERT INTO setohima$Guidance.Guidance_area (id, name, level, kind) VALUES (1, '森林', 1, 1);
 
 
 --

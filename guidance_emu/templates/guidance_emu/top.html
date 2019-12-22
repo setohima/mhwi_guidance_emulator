@@ -2,29 +2,25 @@
 
 {% block content %}
     <h3>カスタム強化したい武器の詳細を入力してください</h3>
-    <div class="container">
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ searchName }}
-            {{ searchUpg }}
-            {{ searchRare }}
-            <button type="submit" class="save btn btn-default">検索</button>
-        </form>
-    </div>
-    <div class="container">
-        {% if resultLevel %}
-        この武器を作るには、
-        <ul>
-            <li>森林地帯レベル　：{{ resultLevel.0 }}</li>
-            <li>荒地地帯レベル　：{{ resultLevel.1 }}</li>
-            <li>陸珊瑚地帯レベル：{{ resultLevel.2 }}</li>
-            <li>瘴気地帯レベル　：{{ resultLevel.3 }}</li>
-            <li>溶岩地帯レベル　：{{ resultLevel.4 }}</li>
-            <li>氷雪地帯レベル　：{{ resultLevel.5 }}</li>
-        </ul>
-        がオススメです。
-        {% endif %}
-    </div>
-    <div class="container table-responsive">
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ searchName }}
+        {{ searchUpg }}
+        {{ searchRare }}
+        <button type="submit" class="save btn btn-default">検索</button>
+    </form>
+    {% if resultLevel %}
+    この武器を作るには、
+    <ul>
+        <li>森林地帯レベル　：{{ resultLevel.0 }}</li>
+        <li>荒地地帯レベル　：{{ resultLevel.1 }}</li>
+        <li>陸珊瑚地帯レベル：{{ resultLevel.2 }}</li>
+        <li>瘴気地帯レベル　：{{ resultLevel.3 }}</li>
+        <li>溶岩地帯レベル　：{{ resultLevel.4 }}</li>
+        <li>氷雪地帯レベル　：{{ resultLevel.5 }}</li>
+    </ul>
+    がオススメです。
+    {% endif %}
+    <div class="table-responsive">
         {% if materialDict %}
         <p>以下はこの武器を作るために必要なモンスターの素材一覧です。</p>
         <table class="table table-hover">

@@ -38,16 +38,16 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                         are.kind,
                         MIN(are.level) AS min,
                         AVG(ref1.mate_num) AS mate_num
-                    FROM (((setohima$Guidance_area.reference_custom_rare_monsters ref1
-                        JOIN setohima$Guidance_area.monsters mob ON ((ref1.monster_id = mob.id)))
-                        JOIN setohima$Guidance_area.reference_monsters_area ref2 ON ((mob.id = ref2.monsters_id)))
-                        JOIN setohima$Guidance_area.guidance_area are ON ((ref2.area_id = are.id)))
+                    FROM (((setohima$Guidance.reference_custom_rare_monsters ref1
+                        JOIN setohima$Guidance.monsters mob ON ((ref1.monster_id = mob.id)))
+                        JOIN setohima$Guidance.reference_monsters_area ref2 ON ((mob.id = ref2.monsters_id)))
+                        JOIN setohima$Guidance.guidance_area are ON ((ref2.area_id = are.id)))
                         JOIN(
                         	SELECT base.id
-                        	FROM setohima$Guidance_area.weapons_custom AS base
+                        	FROM setohima$Guidance.weapons_custom AS base
                         	JOIN (
                         		SELECT id, name
-                        		FROM setohima$Guidance_area.weapons_custom
+                        		FROM setohima$Guidance.weapons_custom
                         		WHERE id IN (%s,%s,%s,%s,%s)
                         	) AS back
                         	ON base.name = back.name AND base.id <= back.id
@@ -61,12 +61,12 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                         area.kind,
                         MIN(area.level) AS min,
                         AVG(ref3.mate_num) AS mate_num
-                    from setohima$Guidance_area.reference_upgrade_materials ref3
-                        inner join setohima$Guidance_area.monsters mob
+                    from setohima$Guidance.reference_upgrade_materials ref3
+                        inner join setohima$Guidance.monsters mob
                         on ref3.id_monsters = mob.id
-                        inner join setohima$Guidance_area.reference_monsters_area ref4
+                        inner join setohima$Guidance.reference_monsters_area ref4
                         on mob.id = ref4.monsters_id
-                        inner join setohima$Guidance_area.guidance_area area
+                        inner join setohima$Guidance.guidance_area area
                         on ref4.area_id = area.id
                     where ref3.id_rare = %s and ref3.id_upgrade <= %s
                     group by mob.id, area.kind
@@ -76,12 +76,12 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                         area.kind,
                         MIN(area.level) AS min,
                         AVG(ref5.mate_num) AS mate_num
-                    from setohima$Guidance_area.reference_parts_wepname_monsters ref5
-                        inner join setohima$Guidance_area.monsters mob
+                    from setohima$Guidance.reference_parts_wepname_monsters ref5
+                        inner join setohima$Guidance.monsters mob
                         on ref5.monster_id = mob.id
-                        inner join setohima$Guidance_area.reference_monsters_area ref6
+                        inner join setohima$Guidance.reference_monsters_area ref6
                         on mob.id = ref6.monsters_id
-                        inner join setohima$Guidance_area.guidance_area area
+                        inner join setohima$Guidance.guidance_area area
                         on ref6.area_id = area.id
                     where ref5.wepname_id = %s and ref5.partseffect_id IN (%s,%s,%s,%s,%s,%s,%s)
                     group by mob.id, area.kind
@@ -91,8 +91,8 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                     select monsters_id, COUNT(kind) AS priority
                     from (
                         select monsters_id, kind
-                        from setohima$Guidance_area.reference_monsters_area refmob
-                            inner join setohima$Guidance_area.guidance_area area
+                        from setohima$Guidance.reference_monsters_area refmob
+                            inner join setohima$Guidance.guidance_area area
                             on refmob.area_id = area.id
                         group by monsters_id, kind
                     ) AS mobtemp
@@ -102,7 +102,7 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                 group by id, priority, mate_num
             	order by priority, id, kind
             ) AS sum_mate
-            JOIN setohima$Guidance_area.monsters AS mate_name
+            JOIN setohima$Guidance.monsters AS mate_name
             on sum_mate.id = mate_name.id
             GROUP BY sum_mate.id, sum_mate.kind, sum_mate.min, sum_mate.priority,
             		mate_name.name, mate_name.material_name, mate_name.isAlchemize

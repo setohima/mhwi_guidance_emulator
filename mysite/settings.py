@@ -76,14 +76,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Guidance',
         'USER': 'djangodb_user', #作ったユーザー名
         'PASSWORD': 'GSwZrcD6tUMUN4r7', #ユーザー作った時のパスワード
-        'HOST': 'db',
-        'PORT': '5432',
+        'HOST': 'mydb',
+        'PORT': '3306',
         'OPTIONS': {
-            'options': '-c search_path=private'
+            'charset': 'utf8mb4',
+            'sql_mode': 'TRADITIONAL,NO_AUTO_VALUE_ON_ZERO,ONLY_FULL_GROUP_BY',
         },
     }
 }

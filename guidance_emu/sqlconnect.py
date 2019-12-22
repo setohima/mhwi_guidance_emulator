@@ -19,35 +19,35 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
 
     try:
         cursor.execute("""
-			SELECT sum_mate.id,
+						SELECT sum_mate.id,
 					sum_mate.kind,
 					sum_mate.min,
 					sum_mate.priority,
-					SUM(sum_mate.mate_num) AS mate_num,
+					TRUNCATE(SUM(sum_mate.mate_num), 0) AS mate_num,
 					mate_name.name,
 					mate_name.material_name,
-					mate_name."isAlchemize"
+					mate_name.isAlchemize
 			FROM (
                 SELECT res.id, 
-                	string_agg(to_char(res.kind,'9'),',') AS kind, 
-                	string_agg(to_char(res.min,'9'),',') AS min,
+                	GROUP_CONCAT(res.kind) AS kind, 
+                	GROUP_CONCAT(res.min) AS min,
                 	mobprior.priority, res.mate_num
                 FROM (
                     SELECT
                         mob.id,
                         are.kind,
-                        MIN(are.level),
-                        AVG(ref1.mate_num)::Integer AS mate_num
-                    FROM (((private.reference_custom_rare_monsters ref1
-                        JOIN private.monsters mob ON ((ref1.monster_id = mob.id)))
-                        JOIN private.reference_monsters_area ref2 ON ((mob.id = ref2.monsters_id)))
-                        JOIN private.guidance_area are ON ((ref2.area_id = are.id)))
+                        MIN(are.level) AS min,
+                        AVG(ref1.mate_num) AS mate_num
+                    FROM (((Guidance.reference_custom_rare_monsters ref1
+                        JOIN Guidance.monsters mob ON ((ref1.monster_id = mob.id)))
+                        JOIN Guidance.reference_monsters_area ref2 ON ((mob.id = ref2.monsters_id)))
+                        JOIN Guidance.guidance_area are ON ((ref2.area_id = are.id)))
                         JOIN(
                         	SELECT base.id
-                        	FROM private.weapons_custom AS base
+                        	FROM Guidance.weapons_custom AS base
                         	JOIN (
-                        		SELECT id, "name"
-                        		FROM private.weapons_custom
+                        		SELECT id, name
+                        		FROM Guidance.weapons_custom
                         		WHERE id IN (%s,%s,%s,%s,%s)
                         	) AS back
                         	ON base.name = back.name AND base.id <= back.id
@@ -59,14 +59,14 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                     select
                         mob.id,
                         area.kind,
-                        MIN(area."level"),
-                        AVG(ref3.mate_num)::Integer AS mate_num
-                    from private.reference_upgrade_materials ref3
-                        inner join private.monsters mob
+                        MIN(area.level) AS min,
+                        AVG(ref3.mate_num) AS mate_num
+                    from Guidance.reference_upgrade_materials ref3
+                        inner join Guidance.monsters mob
                         on ref3.id_monsters = mob.id
-                        inner join private.reference_monsters_area ref4
+                        inner join Guidance.reference_monsters_area ref4
                         on mob.id = ref4.monsters_id
-                        inner join private.guidance_area area
+                        inner join Guidance.guidance_area area
                         on ref4.area_id = area.id
                     where ref3.id_rare = %s and ref3.id_upgrade <= %s
                     group by mob.id, area.kind
@@ -74,14 +74,14 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                     select
                         mob.id,
                         area.kind,
-                        MIN(area."level"),
-                        AVG(ref5.mate_num)::Integer AS mate_num
-                    from private.reference_parts_wepname_monsters ref5
-                        inner join private.monsters mob
+                        MIN(area.level) AS min,
+                        AVG(ref5.mate_num) AS mate_num
+                    from Guidance.reference_parts_wepname_monsters ref5
+                        inner join Guidance.monsters mob
                         on ref5.monster_id = mob.id
-                        inner join private.reference_monsters_area ref6
+                        inner join Guidance.reference_monsters_area ref6
                         on mob.id = ref6.monsters_id
-                        inner join private.guidance_area area
+                        inner join Guidance.guidance_area area
                         on ref6.area_id = area.id
                     where ref5.wepname_id = %s and ref5.partseffect_id IN (%s,%s,%s,%s,%s,%s,%s)
                     group by mob.id, area.kind
@@ -91,8 +91,8 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                     select monsters_id, COUNT(kind) AS priority
                     from (
                         select monsters_id, kind
-                        from private.reference_monsters_area refmob
-                            inner join private.guidance_area area
+                        from Guidance.reference_monsters_area refmob
+                            inner join Guidance.guidance_area area
                             on refmob.area_id = area.id
                         group by monsters_id, kind
                     ) AS mobtemp
@@ -102,10 +102,10 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                 group by id, priority, mate_num
             	order by priority, id, kind
             ) AS sum_mate
-            JOIN private.monsters AS mate_name
+            JOIN Guidance.monsters AS mate_name
             on sum_mate.id = mate_name.id
             GROUP BY sum_mate.id, sum_mate.kind, sum_mate.min, sum_mate.priority,
-            		mate_name.name, mate_name.material_name, mate_name."isAlchemize"
+            		mate_name.name, mate_name.material_name, mate_name.isAlchemize
             ORDER BY sum_mate.priority, sum_mate.id, sum_mate.kind
         """, params)
         row = dictfetchall(cursor)

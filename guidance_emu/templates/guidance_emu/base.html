@@ -1,0 +1,25 @@
+{% load static %}
+<html>
+    <head>
+        <title>導きLvシミュレータ</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">導きLvシミュレータ</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <p>要望・不具合報告は<a href="https://twitter.com/kura_tong">作者のTwitterアカウント</a>へ連絡をお願いします。</p>
+        </div>
+    </body>
+</html>

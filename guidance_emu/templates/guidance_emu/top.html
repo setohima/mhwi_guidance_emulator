@@ -1,12 +1,54 @@
-<html>
-    <head>
-        <title>導きLvシミュレータ</title>
-    </head>
-    <body>
-        <div>
-            <h1>導きLvシミュレータ</h1>
-        </div>
-        <p>Hi there!</p>
-        <p>It works!</p>
-    </body>
-</html>
+{% extends 'guidance_emu/base.html' %}
+
+{% block content %}
+    <h3>カスタム強化したい武器の詳細を入力してください</h3>
+    <div class="container">
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ searchName }}
+            {{ searchUpg }}
+            {{ searchRare }}
+            <button type="submit" class="save btn btn-default">検索</button>
+        </form>
+    </div>
+    <div class="container">
+        {% if resultLevel %}
+        この武器を作るには、
+        <ul>
+            <li>森林地帯レベル　：{{ resultLevel.0 }}</li>
+            <li>荒地地帯レベル　：{{ resultLevel.1 }}</li>
+            <li>陸珊瑚地帯レベル：{{ resultLevel.2 }}</li>
+            <li>瘴気地帯レベル　：{{ resultLevel.3 }}</li>
+            <li>溶岩地帯レベル　：{{ resultLevel.4 }}</li>
+            <li>氷雪地帯レベル　：{{ resultLevel.5 }}</li>
+        </ul>
+        がオススメです。
+        {% endif %}
+    </div>
+    <div class="container table-responsive">
+        {% if materialDict %}
+        <p>以下はこの武器を作るために必要なモンスターの素材一覧です。</p>
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>モンスター名</th>
+                    <th>素材名</th>
+                    <th>必要数</th>
+                    <th>錬金可否</th>
+                </tr>
+            </thead>
+            {% for material in materialDict %}
+            <tr>
+                <td>{{ material.name }}</td>
+                <td>{{ material.material_name }}</td>
+                <td>{{ material.mate_num }}</td>
+                {% if material.isAlchemize == True %}
+                    <td>○</td>
+                {% else %}
+                    <td>×</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+{% endblock %}

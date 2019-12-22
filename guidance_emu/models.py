@@ -99,6 +99,9 @@ class WeaponsCustom(models.Model):
 class WeaponsName(models.Model):
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         managed = False
         db_table = 'weapons_name'
@@ -107,6 +110,9 @@ class WeaponsName(models.Model):
 class WeaponsPartsEffect(models.Model):
     level = models.IntegerField()
     effect = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.effect
 
     class Meta:
         managed = False

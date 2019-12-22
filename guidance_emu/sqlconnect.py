@@ -41,7 +41,7 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                     FROM (((setohima$Guidance.reference_custom_rare_monsters ref1
                         JOIN setohima$Guidance.monsters mob ON ((ref1.monster_id = mob.id)))
                         JOIN setohima$Guidance.reference_monsters_area ref2 ON ((mob.id = ref2.monsters_id)))
-                        JOIN setohima$Guidance.guidance_area are ON ((ref2.area_id = are.id)))
+                        JOIN setohima$Guidance.Guidance_area are ON ((ref2.area_id = are.id)))
                         JOIN(
                         	SELECT base.id
                         	FROM setohima$Guidance.weapons_custom AS base
@@ -66,7 +66,7 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                         on ref3.id_monsters = mob.id
                         inner join setohima$Guidance.reference_monsters_area ref4
                         on mob.id = ref4.monsters_id
-                        inner join setohima$Guidance.guidance_area area
+                        inner join setohima$Guidance.Guidance_area area
                         on ref4.area_id = area.id
                     where ref3.id_rare = %s and ref3.id_upgrade <= %s
                     group by mob.id, area.kind
@@ -81,7 +81,7 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                         on ref5.monster_id = mob.id
                         inner join setohima$Guidance.reference_monsters_area ref6
                         on mob.id = ref6.monsters_id
-                        inner join setohima$Guidance.guidance_area area
+                        inner join setohima$Guidance.Guidance_area area
                         on ref6.area_id = area.id
                     where ref5.wepname_id = %s and ref5.partseffect_id IN (%s,%s,%s,%s,%s,%s,%s)
                     group by mob.id, area.kind
@@ -92,7 +92,7 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                     from (
                         select monsters_id, kind
                         from setohima$Guidance.reference_monsters_area refmob
-                            inner join setohima$Guidance.guidance_area area
+                            inner join setohima$Guidance.Guidance_area area
                             on refmob.area_id = area.id
                         group by monsters_id, kind
                     ) AS mobtemp

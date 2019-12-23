@@ -8,5 +8,5 @@ urlpatterns = [
     path('', views.top, name='top'),
     path('help/', views.help, name='help'),
     path('privacypolicy/', views.privacypolicy, name='privacypolicy'),
-    path('sw.js/', (TemplateView.as_view(template_name="sw.js",content_type='application/javascript', )), name='sw.js'),
+    path('sw.js/', views.sw, name='sw.js'),
 ]

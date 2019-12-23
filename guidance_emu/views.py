@@ -60,6 +60,9 @@ def help(request):
 def privacypolicy(request):
     return render(request, 'guidance_emu/privacypolicy.html')
 
+def sw(request):
+    return render(request, 'sw.js')
+
 def getNameForm(wepname):
     searchName = NameForm()
     nameChoice = []

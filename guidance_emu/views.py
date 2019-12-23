@@ -54,6 +54,9 @@ def top(request):
             })
     return render(request, 'guidance_emu/top.html', {'searchName':searchName, 'searchUpg':searchUpg, 'searchRare': searchCustom})
 
+def help(request):
+    return render(request, 'guidance_emu/help.html')
+
 def getNameForm(wepname):
     searchName = NameForm()
     nameChoice = []

@@ -57,6 +57,9 @@ def top(request):
 def help(request):
     return render(request, 'guidance_emu/help.html')
 
+def privacypolicy(request):
+    return render(request, 'guidance_emu/privacypolicy.html')
+
 def getNameForm(wepname):
     searchName = NameForm()
     nameChoice = []

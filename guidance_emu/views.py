@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from .models import WeaponsCustom, WeaponsName, WeaponsRare, WeaponsPartsEffect, WeaponsUpgrade
+from .models import WeaponsCustom, WeaponsName, WeaponsRare, WeaponsPartsEffect, WeaponsUpgrade, GuidanceSendsearchLog
 from .forms import NameForm, PartsForm, CustomForm
 from .sqlconnect import getNeedLevel
 from .calculater import calcGuidanceLevel
+from ipware import get_client_ip
 
 def top(request):
     wepName = WeaponsName.objects.order_by('id')
@@ -16,6 +17,28 @@ def top(request):
     searchCustom = getCustomForm(wepRare, wepUpg, wepCus)
 
     if request.method == "POST":
+        test1=request.POST["name"]
+        test2=request.POST["part1"]
+        test3=request.POST["rare"]
+        test4=request.POST["upgrade"]
+        test5=request.POST["attack"]
+        GuidanceSendsearchLog(weapons_name=WeaponsName(id=request.POST["name"]),
+                                weapons_parts_effect_id_1st=WeaponsPartsEffect(id=request.POST["part1"]),
+                                weapons_parts_effect_id_2nd=WeaponsPartsEffect(id=request.POST["part2"]),
+                                weapons_parts_effect_id_3rd=WeaponsPartsEffect(id=request.POST["part3"]),
+                                weapons_parts_effect_id_4th=WeaponsPartsEffect(id=request.POST["part4"]),
+                                weapons_parts_effect_id_5th=WeaponsPartsEffect(id=request.POST["part5"]),
+                                weapons_parts_effect_id_6th=WeaponsPartsEffect(id=request.POST["part6"]),
+                                weapons_parts_effect_id_7th=WeaponsPartsEffect(id=request.POST["part7"]),
+                                weapons_rare=WeaponsRare(id=request.POST["rare"]),
+                                weapons_upgrade=WeaponsUpgrade(id=request.POST["upgrade"]),
+                                weapons_custom_id_atk=WeaponsCustom(id=request.POST["attack"]),
+                                weapons_custom_id_crit=WeaponsCustom(id=request.POST["crit"]),
+                                weapons_custom_id_block=WeaponsCustom(id=request.POST["block"]),
+                                weapons_custom_id_cure=WeaponsCustom(id=request.POST["cure"]),
+                                weapons_custom_id_attr=WeaponsCustom(id=request.POST["attribute"]),
+                                user_id_address=get_client_ip(request),
+                                ).save()
         # 必要な素材を持つモンスターの一覧を取得
         rows = getNeedLevel(request.POST["name"], (
                                 request.POST["part1"],

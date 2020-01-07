@@ -37,6 +37,7 @@ class GuidanceSendsearchLog(models.Model):
     weapons_custom_id_block = models.ForeignKey('WeaponsCustom', models.DO_NOTHING, db_column='weapons_custom_id_block', related_name='weapons_custom_id_block', blank=True, null=True)
     weapons_custom_id_cure = models.ForeignKey('WeaponsCustom', models.DO_NOTHING, db_column='weapons_custom_id_cure', related_name='weapons_custom_id_cure',blank=True, null=True)
     weapons_custom_id_attr = models.ForeignKey('WeaponsCustom', models.DO_NOTHING, db_column='weapons_custom_id_attr', related_name='weapons_custom_id_attr',blank=True, null=True)
+    weapons_custom_id_slot = models.ForeignKey('WeaponsCustom', models.DO_NOTHING, db_column='weapons_custom_id_slot', related_name='weapons_custom_id_slot',blank=True, null=True)
     user_id_address = models.CharField(max_length=255, blank=True, null=True)
     sendsearch_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
 

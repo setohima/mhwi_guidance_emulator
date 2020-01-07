@@ -37,6 +37,7 @@ def top(request):
                                 weapons_custom_id_block=WeaponsCustom(id=request.POST["block"]),
                                 weapons_custom_id_cure=WeaponsCustom(id=request.POST["cure"]),
                                 weapons_custom_id_attr=WeaponsCustom(id=request.POST["attribute"]),
+                                weapons_custom_id_slot=WeaponsCustom(id=request.POST["slot"]),
                                 user_id_address=get_client_ip(request),
                                 ).save()
         # 必要な素材を持つモンスターの一覧を取得
@@ -56,6 +57,7 @@ def top(request):
                                 request.POST["block"],
                                 request.POST["cure"],
                                 request.POST["attribute"],
+                                request.POST["slot"],
                             ))
         # 必要なモンスターの一覧から必要導きレベルを取得
         resultLevel = calcGuidanceLevel(rows)
@@ -71,6 +73,7 @@ def top(request):
         searchCustom.fields['block'].initial = request.POST['block']
         searchCustom.fields['cure'].initial = request.POST['cure']
         searchCustom.fields['attribute'].initial = request.POST['attribute']
+        searchCustom.fields['slot'].initial = request.POST['slot']
 
         return render(request, 'guidance_emu/top.html', {
                 'searchName':searchName, 'searchUpg':searchUpg, 'searchRare': searchCustom, 'resultLevel':resultLevel, 'materialDict':rows
@@ -104,6 +107,7 @@ def getCustomForm(weprare, wepupg, wepcus):
     blockChoice = [('0','なし')]
     cureChoice = [('0','なし')]
     attributeChoice = [('0','なし')]
+    slotChoice = [('0','なし')]
 
     for rare in weprare:
         if rare.id == 1:
@@ -126,6 +130,8 @@ def getCustomForm(weprare, wepupg, wepcus):
             cureChoice.append((cus.id, tmp))
         if cus.name == '属性・状態異常強化':
             attributeChoice.append((cus.id, tmp))
+        if cus.name == 'スロット強化':
+            slotChoice.append((cus.id, tmp))
     
     searchCustom.fields['rare'].choices = rareChoice
     searchCustom.fields['upgrade'].choices = upgChoice
@@ -134,6 +140,7 @@ def getCustomForm(weprare, wepupg, wepcus):
     searchCustom.fields['block'].choices = blockChoice
     searchCustom.fields['cure'].choices = cureChoice
     searchCustom.fields['attribute'].choices = attributeChoice
+    searchCustom.fields['slot'].choices = slotChoice
     return searchCustom
 
 def getPartsForm(wepparts):

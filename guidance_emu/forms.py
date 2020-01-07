@@ -75,6 +75,15 @@ class CustomForm(forms.Form):
         })
     )
 
+    slot = forms.ChoiceField(
+        label='スロット強化',
+        required=False,
+        disabled=False,
+        widget=forms.Select(attrs={
+            'id': 'slot',
+        })
+    )
+
 
 class PartsForm(forms.Form):
     part1 = forms.ChoiceField(

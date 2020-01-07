@@ -48,7 +48,7 @@ def getNeedLevel(name, parts, rare, upgrade, custom):
                         	JOIN (
                         		SELECT id, name
                         		FROM setohima$Guidance.weapons_custom
-                        		WHERE id IN (%s,%s,%s,%s,%s)
+                        		WHERE id IN (%s,%s,%s,%s,%s,%s)
                         	) AS back
                         	ON base.name = back.name AND base.id <= back.id
                         ) AS reverseid

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import WeaponsCustom, WeaponsName, WeaponsRare, WeaponsPartsEffect, WeaponsUpgrade, GuidanceSendsearchLog
 from .forms import NameForm, PartsForm, CustomForm
-from .sqlconnect import getNeedLevel
+from .sqlconnect import getNeedLevel, getNeedNarutalMaterial
 from .calculater import calcGuidanceLevel
 from ipware import get_client_ip
 
@@ -61,6 +61,24 @@ def top(request):
                             ))
         # 必要なモンスターの一覧から必要導きレベルを取得
         resultLevel = calcGuidanceLevel(rows)
+        naturalrows = getNeedNarutalMaterial(request.POST["name"], (
+                                request.POST["part1"],
+                                request.POST["part2"],
+                                request.POST["part3"],
+                                request.POST["part4"],
+                                request.POST["part5"],
+                                request.POST["part6"],
+                                request.POST["part7"],
+                            ),
+                            request.POST["rare"],
+                            request.POST["upgrade"],(
+                                request.POST["attack"],
+                                request.POST["crit"],
+                                request.POST["block"],
+                                request.POST["cure"],
+                                request.POST["attribute"],
+                                request.POST["slot"],
+                            ))
 
         searchName.fields['name'].initial = request.POST['name']
         for i in [1,2,3,4,5,6,7]:
@@ -76,7 +94,7 @@ def top(request):
         searchCustom.fields['slot'].initial = request.POST['slot']
 
         return render(request, 'guidance_emu/top.html', {
-                'searchName':searchName, 'searchUpg':searchUpg, 'searchRare': searchCustom, 'resultLevel':resultLevel, 'materialDict':rows
+                'searchName':searchName, 'searchUpg':searchUpg, 'searchRare': searchCustom, 'resultLevel':resultLevel, 'materialDict':rows, 'naturalDict':naturalrows
             })
     return render(request, 'guidance_emu/top.html', {'searchName':searchName, 'searchUpg':searchUpg, 'searchRare': searchCustom})
 

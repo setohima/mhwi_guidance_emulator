@@ -65,4 +65,27 @@
         </table>
         {% endif %}
     </div>
+    <div class="table-responsive">
+        {% if naturalDict %}
+        <p>以下はこの武器を作るために必要な汎用素材の一覧です。</p>
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>素材名</th>
+                    <th>入手方法</th>
+                    <th>必要数</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for natural in naturalDict %}
+                <tr>
+                    <td>{{ natural.name }}</td>
+                    <td>{{ natural.obtain }}</td>
+                    <td>{{ natural.mate_num }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
 {% endblock %}

@@ -1,5 +1,65 @@
 from django.db import connection
 
+def getNeedNarutalMaterial(name, parts, rare, upgrade, custom):
+    params = []
+
+    params.append(str(rare))
+    params.append(str(upgrade))
+    for cus in custom:
+        params.append(str(cus))
+    params.append(str(rare))
+    params.append(str(name))
+    for part in parts:
+        params.append(str(part))
+
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute(""" 
+            SELECT matenum.id_natural id, 
+                MAX(mat.`name`) name, 
+                MAX(mat.obtain) obtain, 
+                sum(matenum.mate_num) mate_num
+            FROM (
+                SELECT ref1.id_natural, ref1.mate_num
+                FROM reference_upgrade_natural ref1
+                WHERE ref1.id_natural > 0
+                AND ref1.id_rare = %s
+                AND ref1.id_upgrade <= %s
+                UNION ALL
+                SELECT ref2.natural_id AS id_natural, ref2.mate_num
+                FROM reference_custom_natural ref2
+                JOIN(
+                    SELECT base.id
+                    FROM weapons_custom AS base
+                    JOIN (
+                        SELECT id, name
+                        FROM weapons_custom
+                        WHERE id IN (%s,%s,%s,%s,%s,%s)
+                    ) AS back
+                    ON base.name = back.name AND base.id <= back.id
+                ) AS reverseid
+                ON ref2.custom_id = reverseid.id
+                WHERE ref2.natural_id > 0
+                AND ref2.rare_id = %s
+                UNION ALL
+                SELECT ref3.natural_id AS id_natural, ref3.mate_num
+                FROM reference_parts_natural ref3
+                WHERE ref3.natural_id > 0
+                AND ref3.wepname_id = %s
+                AND ref3.partseffect_id IN (%s,%s,%s,%s,%s,%s,%s)
+            ) matenum
+            JOIN natural_materials mat
+            ON matenum.id_natural = mat.id
+            GROUP BY id_natural
+        """, params)
+        row = dictfetchall(cursor)
+    finally:
+        cursor.close()
+        connection.close()
+
+    return row
+
 def getNeedLevel(name, parts, rare, upgrade, custom):
     params = []
     

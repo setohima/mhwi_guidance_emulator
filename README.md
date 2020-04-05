@@ -1,3 +1,5 @@
 # mhwi_guidance_emulator
 
-source myvenv/bin/activate
+source myvemv/bin/activate
+
+python manage.py runserver 127.0.0.1:8000

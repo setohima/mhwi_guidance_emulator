@@ -1,1 +1,43 @@
-otakara is waiting you
+<html>
+    {% load static %}
+    <head>
+        <title>#11番目のオタカラ探し</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script>
+            (function(d) {
+              var config = {
+                kitId: 'obk6yhw',
+                scriptTimeout: 3000,
+                async: true
+              },
+              h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            })(document);
+        </script>
+        <style type="text/css">
+            .explain { 
+                background:url({% static 'image/explain.png' %}) center no-repeat;
+                background-size: cover;
+                color: brown;
+            }
+            .caution { border: 2px solid brown; margin-bottom: 2em; }
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron explain">
+            <div class="container">
+                <div class="row">
+                    <div class="col caution">
+                        本企画は有志によって作成された企画であり、株式会社カプコンおよびモンスターハンターシリーズ公式とは関係がありません。
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col tk-ten-mincho">
+                        <p>虫かご族のレイとスーの結婚。妻と子の形見に大盾を作った男。陸珊瑚でモンスターに挑む伝説のライダー。ぶんどり王の切ない思い出。神に祈りを捧げた奇面族。獣纏族に伝わる格言と知恵試しの地図……<br/>オタカラ集めの"その後"のストーリーを創作してみました。</p>
+                        <p>問題は全部で６問。どれも解き応えのある難問ばかりです。ヒントも頼りに、じっくりと味わってみてください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

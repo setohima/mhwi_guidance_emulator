@@ -37,6 +37,12 @@
             .borderline {
                 border-top: 0.1em solid #ebebeb;
                 border-bottom: 0.1em solid #ebebeb;
+                padding: 16px 0px;
+            }
+            .centerize {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .margintop {
                 margin-top: 2em;
@@ -99,18 +105,46 @@
                         <p>presented by</p>
                     </div>
                 </div>
-                <div class="row borderline">
-                    <div class="col">
-                        <img src="{% static 'image/kuaty.png' %}" class="img-icon"/>Kuaty
+                <div class="row justify-content-center borderline">
+                    <div class="col-4 col-xl-3">
+                        <div class="row">
+                            <div class="col-12 col-xl-6">
+                                <img src="{% static 'image/kuaty.png' %}" class="img-icon"/>
+                            </div>
+                            <div class="col-12 col-xl-6 centerize">
+                                <p>Kuaty</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <img src="{% static 'image/heavy_ninja.png' %}" class="img-icon"/>Heavy_Ninja
+                    <div class="col-4 col-xl-3">
+                        <div class="row">
+                            <div class="col-12 col-xl-6">
+                                <img src="{% static 'image/heavy_ninja.png' %}" class="img-icon"/>
+                            </div>
+                            <div class="col-12 col-xl-6 centerize">
+                                <p>Heavy_Ninja</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <img src="{% static 'image/senritsu.png' %}" class="img-icon"/>Senritsu
+                    <div class="col-4 col-xl-3">
+                        <div class="row">
+                            <div class="col-12 col-xl-6">
+                                <img src="{% static 'image/senritsu.png' %}" class="img-icon"/>
+                            </div>
+                            <div class="col-12 col-xl-6 centerize">
+                                <p>Senritsu</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <img src="{% static 'image/seto.png' %}" class="img-icon"/>Seto
+                    <div class="col-4 col-xl-3">
+                        <div class="row">
+                            <div class="col-12 col-xl-6">
+                                <img src="{% static 'image/seto.png' %}" class="img-icon"/>
+                            </div>
+                            <div class="col-12 col-xl-6 centerize">
+                                <p>Seto</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">

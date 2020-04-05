@@ -2,6 +2,7 @@
     {% load static %}
     <head>
         <title>#11番目のオタカラ探し</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script>
@@ -15,15 +16,79 @@
             })(document);
         </script>
         <style type="text/css">
+            .title_head { 
+                background:url({% static 'image/otakara_title.png' %}) center no-repeat;
+                background-size: cover;
+                position: relative;
+                color: white;
+                text-align: center;
+                text-shadow: 1px 2px 3px #000000;
+            }
+            .title {
+                margin-top: 3em;
+                margin-bottom: 2em;
+            }
+            .borderline {
+                border-top: 0.1em solid #ebebeb;
+                border-bottom: 0.1em solid #ebebeb;
+            }
+            .margintop {
+                margin-top: 2em;
+            }
             .explain { 
-                background:url({% static 'image/explain.png' %}) center no-repeat;
+                background:url({% static 'image/explain.png' %}) center repeat-X;
                 background-size: cover;
                 color: brown;
             }
-            .caution { border: 2px solid brown; margin-bottom: 2em; }
+            .caution { border: 0.2em solid brown; margin-bottom: 2em; }
+            .jumbotron { margin-bottom: 0em; }
+            .blacker::before {
+                content: ' ';
+                background-color: rgba(0,0,0,.2);
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
         </style>
     </head>
     <body>
+        <div class="jumbotron title_head">
+            <div class="container tk-ten-mincho blacker">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="title">#11番目のオタカラ集め</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>presented by</p>
+                    </div>
+                </div>
+                <div class="row borderline">
+                    <div class="col">
+                        <p>kuaty</p>
+                    </div>
+                    <div class="col">
+                        <p>Heavy_Ninja</p>
+                    </div>
+                    <div class="col">
+                        <p>Senritsu</p>
+                    </div>
+                    <div class="col">
+                        <p>seto</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col margintop">
+                        <p>この地を生きる</p>
+                        <p>６匹と仲間たちの</p>
+                        <p>”その後”をちょっぴり妄想。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="jumbotron explain">
             <div class="container">
                 <div class="row">
@@ -33,7 +98,7 @@
                 </div>
                 <div class="row">
                     <div class="col tk-ten-mincho">
-                        <p>虫かご族のレイとスーの結婚。妻と子の形見に大盾を作った男。陸珊瑚でモンスターに挑む伝説のライダー。ぶんどり王の切ない思い出。神に祈りを捧げた奇面族。獣纏族に伝わる格言と知恵試しの地図……<br/>オタカラ集めの"その後"のストーリーを創作してみました。</p>
+                        <p>虫かご族のレイとスーの結婚。妻と子の形見に大盾を作った男。陸珊瑚でモンスターに挑む伝説のライダー。ぶんどり王の切ない思い出。神に祈りを捧げた奇面族。獣纏族に伝わる格言と知恵試しの地図……<br/>オタカラ集めの”その後”のストーリーを創作してみました。</p>
                         <p>問題は全部で６問。どれも解き応えのある難問ばかりです。ヒントも頼りに、じっくりと味わってみてください。</p>
                     </div>
                 </div>

@@ -40,9 +40,12 @@
                 padding: 16px 0px;
             }
             .centerize {
+                display: -webkit-flex;
                 display: flex;
-                justify-content: center;
-                align-items: center;
+                -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+                align-items: center; /* 縦方向中央揃え */
+                -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+                justify-content: center; /* 横方向中央揃え */
             }
             .margintop {
                 margin-top: 2em;

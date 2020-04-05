@@ -16,6 +16,9 @@
             })(document);
         </script>
         <style type="text/css">
+            .img-icon {
+                height: 4em;
+            }
             .title_head { 
                 background-image: url({% static 'image/otakara_title.png' %});
                 background-position: center;
@@ -25,6 +28,7 @@
                 color: white;
                 text-align: center;
                 text-shadow: 1px 2px 3px #000000;
+                padding: 64px 0px;
             }
             .title {
                 margin-top: 3em;
@@ -84,11 +88,11 @@
     </head>
     <body>
         <div class="jumbotron title_head">
+            <div class="margintop marginbottom">
+                <img src="{% static 'image/title_logo.png' %}" class="img-fluid"/>
+            </div>
             <div class="container tk-ten-mincho blacker">
                 <div class="row">
-                    <div class="col margintop marginbottom">
-                        <img src="{% static 'image/title_logo.png' %}" class="img-fluid"/>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -97,16 +101,16 @@
                 </div>
                 <div class="row borderline">
                     <div class="col">
-                        <p>kuaty</p>
+                        <img src="{% static 'image/kuaty.png' %}" class="img-icon"/>Kuaty
                     </div>
                     <div class="col">
-                        <p>Heavy_Ninja</p>
+                        <img src="{% static 'image/heavy_ninja.png' %}" class="img-icon"/>Heavy_Ninja
                     </div>
                     <div class="col">
-                        <p>Senritsu</p>
+                        <img src="{% static 'image/senritsu.png' %}" class="img-icon"/>Senritsu
                     </div>
                     <div class="col">
-                        <p>seto</p>
+                        <img src="{% static 'image/seto.png' %}" class="img-icon"/>Seto
                     </div>
                 </div>
                 <div class="row">
@@ -148,7 +152,7 @@
                                 <span>難易度：</span><span>★★★☆☆</span>
                             </div>
                             <div class="col-5 col-xl-12">
-                                <span>作者：</span><span>kuaty</span>
+                                <span>作者：</span><span>Kuaty</span>
                             </div>
                         </div>
                     </div>

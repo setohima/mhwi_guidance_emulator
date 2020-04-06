@@ -15,15 +15,25 @@
               h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
             })(document);
         </script>
+        <script>
+            (function(d) {
+              var config = {
+                kitId: 'acx0jde',
+                scriptTimeout: 3000,
+                async: true
+              },
+              h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/%27+config.kitId+%27.js%27;tk.async=true;tk.onload=tk.onreadystatechange=function()%7Ba=this.readyState;if(f%7C%7Ca&&a!=%22complete%22&&a!=%22loaded%22)return;f=true;clearTimeout(t);try%7BTypekit.load(config)%7Dcatch(e)%7B%7D%7D;s.parentNode.insertBefore(tk,s)
+            })(document);
+          </script>
         <style type="text/css">
             .img-icon {
                 height: 4em;
             }
             .title_head { 
-                background-image: url({% static 'image/otakara_title.png' %});
+                background-image: url({% static 'image/otakara_title_pc.png' %});
                 background-position: center;
-                background-repeat: repeat;
-                background-size: auto;
+                background-repeat: no-repeat;
+                background-size: cover;
                 position: relative;
                 color: white;
                 text-align: center;
@@ -87,10 +97,38 @@
                 text-shadow: 1px 2px 3px #000000;
                 padding: 20px 10px;
             }
-            @media only screen and (max-width: 1125px) {
+            .btn-invisible {
+                margin-top: 20px;
+                display: none;
+            }
+            .question {
+                background-color: rgba(255,250,205,.6);
+                margin-left: 1em;
+                margin-right: 1em;
+                font-family: vdl-admin, sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                color: saddlebrown;
+                text-shadow: 0px 0px 0px #000000;
+                padding: 20px;
+            }
+            .question > hr {
+                background-color: saddlebrown;
+                height: 2px;
+            }
+            .question > .hr-dot {
+                background-color: rgba(0,0,0,0);
+                border: 0;
+                border-top: 2px dashed saddlebrown;
+            }
+            @media only screen and (max-width: 1200px) {
+                /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
                 .title_head, .main_background, .forest{
-                    background-repeat: no-repeat;
-                    background-size: cover;
+                    background-repeat: repeat;
+                    background-size: auto;
+                }
+                .title_head { 
+                    background-image: url({% static 'image/otakara_title.png' %});
                 }
             }
         </style>
@@ -176,25 +214,54 @@
         </div>
         <div class="jumbotron main_background tk-ten-mincho">
             <div class="container">
-                <div class="row jumbotron forest">
-                    <div class="col-2 col-xl-2">
-                        <button type="button" class="btn btn-outline-light">▷</button>
-                    </div>
-                    <div class="col-10 col-xl-5">
-                        <h1>古代樹の森</h1>
-                    </div>
-                    <div class="col-12 col-xl-5">
-                        <div class="row">
-                            <div class="col-5 col-xl-12">
-                                <span>難易度：</span><span>★★★☆☆</span>
+                <div class="jumbotron forest">
+                    <div class="row">
+                        <div class="col-2 col-xl-2">
+                            <button type="button" id="forestBtn" class="btn btn-outline-light">▷</button>
+                        </div>
+                        <div class="col-10 col-xl-5">
+                            <h1>古代樹の森</h1>
+                        </div>
+                        <div class="col-12 col-xl-5">
+                            <div class="row">
+                                <div class="col-5 col-xl-12">
+                                    <span>難易度：</span><span>★★★☆☆</span>
+                                </div>
+                                <div class="col-5 col-xl-12">
+                                    <span>作者：</span><span>Kuaty</span>
+                                </div>
                             </div>
-                            <div class="col-5 col-xl-12">
-                                <span>作者：</span><span>Kuaty</span>
+                        </div>
+                    </div>
+                    <div class="btn-invisible" id='forestHidden'>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="question">
+                                    <h2><b>祝福のおすそわけ　11</b></h2>
+                                    <hr/>
+                                    　きょうは２人の結婚からちょうど１年の、だいじな記念日ね。お互いにプレゼントを交換しなくっちゃ！スーからの贈りものは、森の中に用意してあるの。<br/>
+                                    　私たちは知力を磨いて生きる虫かご族。レイならこの場所は分かるわよね。
+                                    <hr class="hr-dot"/>
+                                    　「滝隠し洞窟」から上へ上へと水源へ。とっても「ドキドキ」する場所で「キノコ屋さん」を手懐けて、一気にふた山ピョンピョンピョン！落ちないようにしがみついてね。<br/>
+                                    　登った先の「緑の風切羽」が棲む樹の根元の「小さな窓」にプレゼントを隠しておいたわ。
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            var forestBtn = document.getElementById('forestBtn');
+            forestBtn.addEventListener('click', function(){
+                var forestHidden = document.getElementById('forestHidden');
+                if(document.defaultView.getComputedStyle(forestHidden,null).display == 'none'){
+                    forestHidden.style.display = 'flex';
+                } else {
+                    forestHidden.style.display = 'none';
+                }
+                
+            },false);
+        </script>
     </body>
 </html>

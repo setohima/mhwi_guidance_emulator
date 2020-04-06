@@ -97,6 +97,15 @@
                 text-shadow: 1px 2px 3px #000000;
                 padding: 20px 10px;
             }
+            .wasteland {
+                background-image: url({% static 'image/wasteland.png' %});
+                background-position: center;
+                background-repeat: repeat;
+                background-size: auto;
+                text-shadow: 1px 2px 3px #000000;
+                padding: 20px 10px;
+                margin-top: 20px;
+            }
             .btn-invisible {
                 margin-top: 20px;
                 display: none;
@@ -237,13 +246,48 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="question">
-                                    <h2><b>祝福のおすそわけ　11</b></h2>
+                                    <h2><b>祝福のおすそわけ 11</b></h2>
                                     <hr/>
                                     　きょうは２人の結婚からちょうど１年の、だいじな記念日ね。お互いにプレゼントを交換しなくっちゃ！スーからの贈りものは、森の中に用意してあるの。<br/>
                                     　私たちは知力を磨いて生きる虫かご族。レイならこの場所は分かるわよね。
                                     <hr class="hr-dot"/>
                                     　「滝隠し洞窟」から上へ上へと水源へ。とっても「ドキドキ」する場所で「キノコ屋さん」を手懐けて、一気にふた山ピョンピョンピョン！落ちないようにしがみついてね。<br/>
-                                    　登った先の「緑の風切羽」が棲む樹の根元の「小さな窓」にプレゼントを隠しておいたわ。
+                                    　登った先、「緑の風切羽」が棲む樹にぽっかり空いた「小さな窓」にプレゼントを隠しておいたわ。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jumbotron wasteland">
+                    <div class="row">
+                        <div class="col-2 col-xl-2">
+                            <button type="button" id="wastelandBtn" class="btn btn-outline-light">▷</button>
+                        </div>
+                        <div class="col-10 col-xl-5">
+                            <h1>大蟻塚の荒地</h1>
+                        </div>
+                        <div class="col-12 col-xl-5">
+                            <div class="row">
+                                <div class="col-5 col-xl-12">
+                                    <span>難易度：</span><span>★★★☆☆</span>
+                                </div>
+                                <div class="col-5 col-xl-12">
+                                    <span>作者：</span><span>Kuaty</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-invisible" id='wastelandHidden'>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="question">
+                                    <h2><b>祝福のおすそわけ 11</b></h2>
+                                    <hr/>
+                                    　きょうは２人の結婚からちょうど１年の、だいじな記念日ね。お互いにプレゼントを交換しなくっちゃ！スーからの贈りものは、森の中に用意してあるの。<br/>
+                                    　私たちは知力を磨いて生きる虫かご族。レイならこの場所は分かるわよね。
+                                    <hr class="hr-dot"/>
+                                    　「滝隠し洞窟」から上へ上へと水源へ。とっても「ドキドキ」する場所で「キノコ屋さん」を手懐けて、一気にふた山ピョンピョンピョン！落ちないようにしがみついてね。<br/>
+                                    　登った先、「緑の風切羽」が棲む樹にぽっかり空いた「小さな窓」にプレゼントを隠しておいたわ。
                                 </div>
                             </div>
                         </div>
@@ -260,7 +304,16 @@
                 } else {
                     forestHidden.style.display = 'none';
                 }
-                
+            },false);
+
+            var wastelandBtn = document.getElementById('wastelandBtn');
+            wastelandBtn.addEventListener('click', function(){
+                var wastelandHidden = document.getElementById('wastelandHidden');
+                if(document.defaultView.getComputedStyle(wastelandHidden,null).display == 'none'){
+                    wastelandHidden.style.display = 'flex';
+                } else {
+                    wastelandHidden.style.display = 'none';
+                }
             },false);
         </script>
     </body>

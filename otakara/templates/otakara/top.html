@@ -401,32 +401,32 @@
                 };
             });
             $(function(){  
-                var a = $('.new-inner-window'),
-                    b = $('.new-inner-overlay'),
-                    c = $('.show-window'),
-                    d = $('.new-inner-close')
-                    e = $('.new-inner-text span');
+                var window = $('.new-inner-window'),
+                    overlay = $('.new-inner-overlay'),
+                    windowBtn = $('.show-window'),
+                    closeBtn = $('.new-inner-close'),
+                    windowSpan = $('.new-inner-text span');
 
                 //OPENをクリックでモーダルを開く
-                c.on('click',function(){
+                windowBtn.on('click',function(){
                     var id = $(this).attr('id');
                     if(id == 'forestHintBtn'){
-                        e.text('Hint');
+                        windowSpan.text('Hint');
                     }
                     if(id == 'forestAnsBtn'){
-                        e.text('Answer');
+                        windowSpan.text('Answer');
                     }
-                    a.fadeIn();
+                    window.fadeIn();
                 });
                 
                 //CLOSEをクリックでモーダルを閉じる
-                d.on('click',function(){
-                    a.fadeOut();
+                closeBtn.on('click',function(){
+                    window.fadeOut();
                 });
                 
                 //モーダルの周りをクリックで閉じる
-                b.on('click',function(){
-                    a.fadeOut();
+                overlay.on('click',function(){
+                    window.fadeOut();
                 });
             });
         </script>

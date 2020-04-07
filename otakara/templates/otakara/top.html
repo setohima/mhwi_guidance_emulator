@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
             (function(d) {
               var config = {
@@ -112,8 +113,6 @@
             }
             .question {
                 background-color: rgba(255,250,205,.6);
-                margin-left: 1em;
-                margin-right: 1em;
                 font-family: vdl-admin, sans-serif;
                 font-style: normal;
                 font-weight: 400;
@@ -129,6 +128,15 @@
                 background-color: rgba(0,0,0,0);
                 border: 0;
                 border-top: 2px dashed saddlebrown;
+            }
+            .show-window {
+                background-color: rgba(255,255,255,1);
+                margin-top: 1em;
+                text-shadow: 0px 0px 0px #000000;
+                color: brown;
+            }
+            .show-window p {
+                margin-top: 1rem;
             }
             @media only screen and (max-width: 1200px) {
                 /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
@@ -261,6 +269,12 @@
                                     　登った先、「緑の風切羽」が棲む樹にぽっかり空いた「小さな窓」にプレゼントを隠しておいたわ。
                                 </div>
                             </div>
+                            <div class="col-12 col-xl-4">
+                                <button type="button" id="forestHintBtn" class="btn btn-block show-window">ヒントを見る</button>
+                            </div>
+                            <div class="col-12 col-xl-8">
+                                    <button type="button" id="forestAnsBtn" class="btn btn-block show-window">この小問の答え合わせをする</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -302,25 +316,35 @@
             </div>
         </div>
         <script>
-            var forestBtn = document.getElementById('forestBtn');
-            forestBtn.addEventListener('click', function(){
-                var forestHidden = document.getElementById('forestHidden');
-                if(document.defaultView.getComputedStyle(forestHidden,null).display == 'none'){
-                    forestHidden.style.display = 'flex';
-                } else {
-                    forestHidden.style.display = 'none';
-                }
-            },false);
+            $(function(){
+                var allHidden = $('.btn-invisible'),
+                    allButton = $('.btn-outline-light'),
+                    forestBtn = $('#forestBtn'),
+                    forestHidden = $('#forestHidden'),
+                    wastelandBtn = $('#wastelandBtn'),
+                    wastelandHidden = $('#wastelandHidden');
 
-            var wastelandBtn = document.getElementById('wastelandBtn');
-            wastelandBtn.addEventListener('click', function(){
-                var wastelandHidden = document.getElementById('wastelandHidden');
-                if(document.defaultView.getComputedStyle(wastelandHidden,null).display == 'none'){
-                    wastelandHidden.style.display = 'flex';
-                } else {
-                    wastelandHidden.style.display = 'none';
-                }
-            },false);
+                forestBtn.on('click', function(){
+                    onAreaClicked(forestBtn, forestHidden);
+                });
+
+                wastelandBtn.on('click', function(){
+                    onAreaClicked(wastelandBtn, wastelandHidden);
+                });
+
+                function onAreaClicked(btn, hidden){
+                    if(hidden.css('display')=='none'){
+                        allButton.text('▷');
+                        btn.text('×');
+                        allHidden.hide('fast', function(){
+                            hidden.show('fast');
+                        });
+                    }else{
+                        btn.text('▷');
+                        hidden.hide('fast');
+                    }
+                };
+            });
         </script>
     </body>
 </html>

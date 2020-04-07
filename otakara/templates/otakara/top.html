@@ -132,11 +132,53 @@
             .show-window {
                 background-color: rgba(255,255,255,1);
                 margin-top: 1em;
+            }
+            .new-inner-window{
+                display: none;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .new-inner-overlay{
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: rgba(0,0,0,0.5);
+            }
+            .new-inner-body{
+                display: table;
+                width: 100%;
+                height: 100%;
+            }
+            .new-inner-main{
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+                padding: 25px;
+            }
+            .new-inner-content{
+                position: relative;
+                display: inline-block;
+                width: 70vw;
+                background: #fff;
+                padding: 25px;
+                box-sizing: border-box;
+            }
+            .new-inner-text{
+                line-height: 1.8;
+                padding: 0 0 25px;
                 text-shadow: 0px 0px 0px #000000;
                 color: brown;
             }
-            .show-window p {
-                margin-top: 1rem;
+            .new-inner-text span{
+                display: inline-block;
+                text-align: left;
             }
             @media only screen and (max-width: 1200px) {
                 /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
@@ -315,12 +357,25 @@
                 </div>
             </div>
         </div>
+        <div class="new-inner-window">
+            <div class="new-inner-overlay"></div>
+            <div class="new-inner-body">
+              <div class="new-inner-main">
+                <div class="new-inner-content">
+                  <p class="new-inner-text"><span></span></p>
+                    <button class="new-inner-close btn btn-dark">CLOSE</button>
+                  </div>
+               </div>
+            </div>
+        </div>
         <script>
             $(function(){
                 var allHidden = $('.btn-invisible'),
                     allButton = $('.btn-outline-light'),
                     forestBtn = $('#forestBtn'),
                     forestHidden = $('#forestHidden'),
+                    forestHintBtn = $('#forestHintBtn'),
+                    forestAnsBtn = $('#forestAnsBtn'),
                     wastelandBtn = $('#wastelandBtn'),
                     wastelandHidden = $('#wastelandHidden');
 
@@ -344,6 +399,35 @@
                         hidden.hide('fast');
                     }
                 };
+            });
+            $(function(){  
+                var a = $('.new-inner-window'),
+                    b = $('.new-inner-overlay'),
+                    c = $('.show-window'),
+                    d = $('.new-inner-close')
+                    e = $('.new-inner-text span');
+
+                //OPENをクリックでモーダルを開く
+                c.on('click',function(){
+                    var id = $(this).attr('id');
+                    if(id == 'forestHintBtn'){
+                        e.text('Hint');
+                    }
+                    if(id == 'forestAnsBtn'){
+                        e.text('Answer');
+                    }
+                    a.fadeIn();
+                });
+                
+                //CLOSEをクリックでモーダルを閉じる
+                d.on('click',function(){
+                    a.fadeOut();
+                });
+                
+                //モーダルの周りをクリックで閉じる
+                b.on('click',function(){
+                    a.fadeOut();
+                });
             });
         </script>
     </body>

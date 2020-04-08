@@ -97,6 +97,15 @@
                 background-size: cover;
                 text-shadow: 1px 2px 3px #000000;
                 padding: 20px 10px;
+                position: relative;
+            }
+            .forest .perfect {
+                display: none;
+                position: absolute;
+                width: auto;
+                height: 100%;
+                top: 20px;
+                right: 15px;
             }
             .wasteland {
                 background-image: url({% static 'image/wasteland.png' %});
@@ -291,6 +300,7 @@
             <div class="container">
                 <div class="jumbotron forest">
                     <div class="row">
+                        <img class="perfect" src="{% static 'image/perfect.png' %}">
                         <div class="col-2 col-xl-2">
                             <button type="button" id="forestBtn" class="btn btn-outline-light">▷</button>
                         </div>
@@ -401,6 +411,12 @@
         </div>
         <script>
             $(function(){
+                $(window).on('load', function(){
+                    if(localStorage.getItem('forest') == '1'){
+                        showPerfect();
+                    }
+                });
+
                 var allHidden = $('.btn-invisible'),
                     allButton = $('.btn-outline-light'),
                     forestBtn = $('#forestBtn'),
@@ -408,7 +424,8 @@
                     forestHintBtn = $('#forestHintBtn'),
                     forestAnsBtn = $('#forestAnsBtn'),
                     wastelandBtn = $('#wastelandBtn'),
-                    wastelandHidden = $('#wastelandHidden');
+                    wastelandHidden = $('#wastelandHidden'),
+                    successBtn = $('.new-inner-success');
 
                 forestBtn.on('click', function(){
                     onAreaClicked(forestBtn, forestHidden);
@@ -436,13 +453,32 @@
                         hidden.hide('fast');
                     }
                 };
+
+                //successをクリックでセッション追加
+                successBtn.on('click',function(){
+                    if (isLocalStorageAvlbl() == true){
+                        /// localStorageに対応済み
+                        localStorage.setItem('forest', '1');
+                        console.log('forestset:' + localStorage.getItem('forest'));
+                    }else{
+                        /// localStorageには未対応
+                        console.error('cannot use localStorage');
+                    }
+                    showPerfect();
+                });
+
+                function showPerfect(){
+                    forestBtn.css('visibility','hidden');
+                    forestHidden.hide('fast', function(){
+                        $('.forest .perfect').show('fast');
+                    });
+                };
             });
             $(function(){  
-                var window = $('.new-inner-window'),
+                var innerWindow = $('.new-inner-window'),
                     overlay = $('.new-inner-overlay'),
                     windowBtn = $('.show-window'),
                     closeBtn = $('.new-inner-close'),
-                    successBtn = $('.new-inner-success'),
                     windowSpan = $('.new-inner-text span');
 
                 //OPENをクリックでモーダルを開く
@@ -454,37 +490,37 @@
                     if(id == 'forestAnsBtn'){
                         windowSpan.text('Answer');
                     }
-                    window.fadeIn();
-                });
-
-                //successをクリックでセッション追加
-                successBtn.on('click',function(){
-                    if(('sessionStorage' in window) && (window.sessionStorage !== null)) {
-                        // ストレージ使用可能
-                        console.log('session OK');
-                    } else {
-                        // ストレージ使用不可
-                        console.log('session NG');
-                    }
-                    if(('localStorage' in window) && (window.localStorage !== null)) {
-                        // ローカルストレージが使える
-                        console.log('local OK');
-                    } else {
-                        // 使えない。。。
-                        console.log('local NG');
-                    }
+                    innerWindow.fadeIn();
                 });
                 
                 //CLOSEをクリックでモーダルを閉じる
                 closeBtn.on('click',function(){
-                    window.fadeOut();
+                    innerWindow.fadeOut();
                 });
                 
                 //モーダルの周りをクリックで閉じる
                 overlay.on('click',function(){
-                    window.fadeOut();
+                    innerWindow.fadeOut();
                 });
             });
+
+            function isLocalStorageAvlbl(){
+                if (typeof localStorage !== 'undefined') {
+                    try {
+                        localStorage.setItem('dummy', '1');
+                        if (localStorage.getItem('dummy') === '1') {
+                            localStorage.removeItem('dummy');
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } catch(e) {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
         </script>
     </body>
 </html>

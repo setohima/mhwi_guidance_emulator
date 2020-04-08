@@ -118,6 +118,7 @@
                 font-weight: 400;
                 color: saddlebrown;
                 text-shadow: 0px 0px 0px #000000;
+                width: 100%;
                 padding: 20px;
             }
             .question > hr {
@@ -132,6 +133,9 @@
             .show-window {
                 background-color: rgba(255,255,255,1);
                 margin-top: 1em;
+                width: 98%;
+                margin-right: auto;
+                margin-left: auto;
             }
             .new-inner-window{
                 display: none;
@@ -195,6 +199,9 @@
                 }
                 .wasteland h1 {
                     font-size: 8vw;
+                }
+                .question h2 {
+                    font-size: 6vw;
                 }
             }
         </style>
@@ -406,6 +413,11 @@
 
                 wastelandBtn.on('click', function(){
                     onAreaClicked(wastelandBtn, wastelandHidden);
+                });
+
+                $(window).resize(function(){
+                    allHidden.css('width', 'auto');
+                    allHidden.css('height', 'auto');
                 });
 
                 function onAreaClicked(btn, hidden){

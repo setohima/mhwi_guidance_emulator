@@ -133,9 +133,6 @@
             .show-window {
                 background-color: rgba(255,255,255,1);
                 margin-top: 1em;
-                width: 98%;
-                margin-right: auto;
-                margin-left: auto;
             }
             .new-inner-window{
                 display: none;
@@ -202,6 +199,11 @@
                 }
                 .question h2 {
                     font-size: 6vw;
+                }
+                .show-window {
+                    width: 85%;
+                    margin-right: auto;
+                    margin-left: auto;
                 }
             }
         </style>
@@ -391,6 +393,7 @@
               <div class="new-inner-main">
                 <div class="new-inner-content">
                   <p class="new-inner-text"><span></span></p>
+                    <button class="new-inner-success btn btn-dark">SUCCESS</button>
                     <button class="new-inner-close btn btn-dark">CLOSE</button>
                   </div>
                </div>
@@ -439,6 +442,7 @@
                     overlay = $('.new-inner-overlay'),
                     windowBtn = $('.show-window'),
                     closeBtn = $('.new-inner-close'),
+                    successBtn = $('.new-inner-success'),
                     windowSpan = $('.new-inner-text span');
 
                 //OPENをクリックでモーダルを開く
@@ -451,6 +455,24 @@
                         windowSpan.text('Answer');
                     }
                     window.fadeIn();
+                });
+
+                //successをクリックでセッション追加
+                successBtn.on('click',function(){
+                    if(('sessionStorage' in window) && (window.sessionStorage !== null)) {
+                        // ストレージ使用可能
+                        console.log('session OK');
+                    } else {
+                        // ストレージ使用不可
+                        console.log('session NG');
+                    }
+                    if(('localStorage' in window) && (window.localStorage !== null)) {
+                        // ローカルストレージが使える
+                        console.log('local OK');
+                    } else {
+                        // 使えない。。。
+                        console.log('local NG');
+                    }
                 });
                 
                 //CLOSEをクリックでモーダルを閉じる

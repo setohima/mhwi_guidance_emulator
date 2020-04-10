@@ -9,13 +9,15 @@ $(function(){
     innerHintWindow = $('.new-inner-Hint'),
     innerAnsWindow = $('.new-inner-Ans'),
     innerWindow = $('.new-inner-window'),
-    windowSpan = $('.new-inner-text span');
+    windowSpan = $('.new-inner-text span'),
+    windowArea = '',
+    windowFunc = '';
 
     // ページ読み込み時、localStrageからクリア状況を読み取り反映
     $(window).on('load', function(){
         if(isLocalStorageAvlbl() == true){
             if(localStorage.getItem('forest') == '1'){
-                showPerfect();
+                showPerfect('forest');
             }
         }
     });
@@ -46,37 +48,44 @@ $(function(){
         }
     };
 
-    // デバッグ用：successをクリックで森セッション追加
+    // successをクリックでセッション追加
     successBtn.on('click',function(){
-        if (isLocalStorageAvlbl() == true){
-            /// localStorageに対応済み
-            localStorage.setItem('forest', '1');
+        if(windowArea != ''){
+            if (isLocalStorageAvlbl() == true){
+                /// localStorageに対応済み
+                localStorage.setItem(windowArea, '1');
+            }else{
+                /// localStorageには未対応
+                console.error('cannot use localStorage');
+            }
+            showPerfect(windowArea);
         }else{
-            /// localStorageには未対応
-            console.error('cannot use localStorage');
+            console.error('windowArea is none');
         }
-        showPerfect();
     });
 
-    // 森にパーフェクトマークを表示
-    function showPerfect(){
-        forestBtn.text('▷');
-        forestHidden.hide('fast', function(){
-            $('.forest .perfect').show('fast');
+    // パーフェクトマークを表示
+    function showPerfect(area){
+        $('#'+area+'Btn').text('▷');
+        $('#'+area+'Hidden').hide('fast', function(){
+            console.log(area);
+            console.log($('.'+area+' .perfect'));
+            $('.'+area+' .mark-success').show('fast');
+            $('.'+area+' .perfect').show('fast');
         });
     };
 
     //show-windowクラスでモーダルを開く
     $('.show-window').on('click',function(){
-        var area = $(this).attr('area');
-        var func = $(this).attr('func');
-        if(func == 'Hint'){
+        windowArea = $(this).attr('area');
+        windowFunc = $(this).attr('func');
+        if(windowFunc == 'Hint'){
             // ヒント内容切り替え用関数
-            showHintOf(area);
+            showHintOf(windowArea);
             innerHintWindow.fadeIn();
-        }else if(func == 'Ans'){
+        }else if(windowFunc == 'Ans'){
             // 回答画面内容切り替え用関数
-            showAnsOf(area);
+            showAnsOf(windowArea);
             innerAnsWindow.fadeIn();
         }
     });

@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/top.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
             (function(d) {
@@ -25,194 +26,26 @@
               },
               h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
             })(document);
-          </script>
-        <style type="text/css">
-            .img-icon {
-                height: 4em;
-            }
+        </script>
+        <style>
             .title_head { 
                 background-image: url({% static 'image/otakara_title_pc.png' %});
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                position: relative;
-                color: white;
-                text-align: center;
-                text-shadow: 1px 2px 3px #000000;
-                padding: 64px 0px;
-            }
-            .title {
-                margin-top: 3em;
-                margin-bottom: 2em;
-            }
-            .borderline {
-                border-top: 0.1em solid #ebebeb;
-                border-bottom: 0.1em solid #ebebeb;
-                padding: 16px 0px;
-            }
-            .centerize {
-                display: -webkit-flex;
-                display: flex;
-                -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
-                align-items: center; /* 縦方向中央揃え */
-                -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
-                justify-content: center; /* 横方向中央揃え */
-            }
-            .margintop {
-                margin-top: 2em;
-            }
-            .marginbottom {
-                margin-bottom: 2em;
             }
             .explain { 
                 background-image: url({% static 'image/explain.png' %});
-                background-position: center;
-                background-repeat: repeat;
-                background-size: cover;
-                color: brown;
-            }
-            .caution { border: 0.1em solid brown; margin-bottom: 2em; }
-            .jumbotron { margin-bottom: 0em; }
-            .blacker::before {
-                content: ' ';
-                background-color: rgba(0,0,0,.2);
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
             }
             .main_background {
                 background-image: url({% static 'image/main_background.png' %});
-                background-position: top left;
-                background-repeat: repeat;
-                background-size: auto;
-                color: white;
-
             }
             .forest {
                 background-image: url({% static 'image/forest.png' %});
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                text-shadow: 1px 2px 3px #000000;
-                padding: 20px 10px;
-                position: relative;
-            }
-            .forest .perfect {
-                display: none;
-                position: absolute;
-                width: auto;
-                height: 100%;
-                top: 20px;
-                right: 15px;
             }
             .wasteland {
                 background-image: url({% static 'image/wasteland.png' %});
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                text-shadow: 1px 2px 3px #000000;
-                padding: 20px 10px;
-                margin-top: 20px;
-            }
-            .btn-invisible {
-                margin-top: 20px;
-                display: none;
-            }
-            .question {
-                background-color: rgba(255,250,205,.6);
-                font-family: vdl-admin, sans-serif;
-                font-style: normal;
-                font-weight: 400;
-                color: saddlebrown;
-                text-shadow: 0px 0px 0px #000000;
-                width: 100%;
-                padding: 20px;
-            }
-            .question > hr {
-                background-color: saddlebrown;
-                height: 1.5px;
-            }
-            .question > .hr-dot {
-                background-color: rgba(0,0,0,0);
-                border: 0;
-                border-top: 2px dashed saddlebrown;
-            }
-            .show-window {
-                background-color: rgba(255,255,255,1);
-                margin-top: 1em;
-            }
-            .new-inner-window{
-                display: none;
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                overflow: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .new-inner-overlay{
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                background: rgba(0,0,0,0.5);
-            }
-            .new-inner-body{
-                display: table;
-                width: 100%;
-                height: 100%;
-            }
-            .new-inner-main{
-                display: table-cell;
-                text-align: center;
-                vertical-align: middle;
-                padding: 25px;
-            }
-            .new-inner-content{
-                position: relative;
-                display: inline-block;
-                width: 70vw;
-                background: #fff;
-                padding: 25px;
-                box-sizing: border-box;
-            }
-            .new-inner-text{
-                line-height: 1.8;
-                padding: 0 0 25px;
-                text-shadow: 0px 0px 0px #000000;
-                color: brown;
-            }
-            .new-inner-text span{
-                display: inline-block;
-                text-align: left;
             }
             @media only screen and (max-width: 1200px) {
-                /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
-                .title_head, .forest, .wasteland{
-                    background-repeat: repeat;
-                    background-size: cover;
-                    background-position: top left;
-                }
                 .title_head { 
                     background-image: url({% static 'image/otakara_title.png' %});
-                }
-                .forest h1 {
-                    font-size: 10vw;
-                }
-                .wasteland h1 {
-                    font-size: 8vw;
-                }
-                .question h2 {
-                    font-size: 6vw;
-                }
-                .show-window {
-                    width: 85%;
-                    margin-right: auto;
-                    margin-left: auto;
                 }
             }
         </style>
@@ -302,7 +135,7 @@
                     <div class="row">
                         <img class="perfect" src="{% static 'image/perfect.png' %}">
                         <div class="col-2 col-xl-2">
-                            <button type="button" id="forestBtn" class="btn btn-outline-light">▷</button>
+                            <button type="button" id="forestBtn" name="forest" class="btn btn-outline-light">▷</button>
                         </div>
                         <div class="col-10 col-xl-5">
                             <h1>古代樹の森</h1>
@@ -332,10 +165,10 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xl-4">
-                                <button type="button" id="forestHintBtn" class="btn btn-block show-window">ヒントを見る</button>
+                                <button type="button" id="forestHintBtn" area="forest" func="Hint" class="btn btn-block show-window">ヒントを見る</button>
                             </div>
                             <div class="col-12 col-xl-8">
-                                    <button type="button" id="forestAnsBtn" class="btn btn-block show-window">この小問の答え合わせをする</button>
+                                    <button type="button" id="forestAnsBtn" area="forest" func="Ans" class="btn btn-block show-window">この小問の答え合わせをする</button>
                             </div>
                         </div>
                     </div>
@@ -343,7 +176,7 @@
                 <div class="jumbotron wasteland">
                     <div class="row">
                         <div class="col-2 col-xl-2">
-                            <button type="button" id="wastelandBtn" class="btn btn-outline-light">▷</button>
+                            <button type="button" id="wastelandBtn" name="wasteland" class="btn btn-outline-light">▷</button>
                         </div>
                         <div class="col-10 col-xl-5">
                             <h1>大蟻塚の荒地</h1>
@@ -373,10 +206,10 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xl-4">
-                                <button type="button" id="forestHintBtn" class="btn btn-block show-window">ヒントを見る</button>
+                                <button type="button" id="wastelandHintBtn" area="wasteland" func="Hint" class="btn btn-block show-window">ヒントを見る</button>
                             </div>
                             <div class="col-12 col-xl-8">
-                                    <button type="button" id="forestAnsBtn" class="btn btn-block show-window">この小問の答え合わせをする</button>
+                                    <button type="button" id="wastelandAnsBtn" area="wasteland" func="Ans" class="btn btn-block show-window">この小問の答え合わせをする</button>
                             </div>
                         </div>
                     </div>
@@ -402,125 +235,13 @@
             <div class="new-inner-body">
               <div class="new-inner-main">
                 <div class="new-inner-content">
-                  <p class="new-inner-text"><span></span></p>
-                    <button class="new-inner-success btn btn-dark">SUCCESS</button>
+                    <p class="new-inner-text"><span></span></p>
+                    <div class="new-inner-div"></div>
                     <button class="new-inner-close btn btn-dark">CLOSE</button>
                   </div>
                </div>
             </div>
         </div>
-        <script>
-            $(function(){
-                $(window).on('load', function(){
-                    if(localStorage.getItem('forest') == '1'){
-                        showPerfect();
-                    }
-                });
-
-                var allHidden = $('.btn-invisible'),
-                    allButton = $('.btn-outline-light'),
-                    forestBtn = $('#forestBtn'),
-                    forestHidden = $('#forestHidden'),
-                    forestHintBtn = $('#forestHintBtn'),
-                    forestAnsBtn = $('#forestAnsBtn'),
-                    wastelandBtn = $('#wastelandBtn'),
-                    wastelandHidden = $('#wastelandHidden'),
-                    successBtn = $('.new-inner-success');
-
-                forestBtn.on('click', function(){
-                    onAreaClicked(forestBtn, forestHidden);
-                });
-
-                wastelandBtn.on('click', function(){
-                    onAreaClicked(wastelandBtn, wastelandHidden);
-                });
-
-                $(window).resize(function(){
-                    allHidden.css('width', 'auto');
-                    allHidden.css('height', 'auto');
-                });
-
-                function onAreaClicked(btn, hidden){
-                    if(hidden.css('display')=='none'){
-                        allButton.text('▷');
-                        btn.text('×');
-                        allHidden.hide('fast', function(){
-                            hidden.show('normal');
-                        });
-                        hidden.stop(false, false);
-                    }else{
-                        btn.text('▷');
-                        hidden.hide('fast');
-                    }
-                };
-
-                //successをクリックでセッション追加
-                successBtn.on('click',function(){
-                    if (isLocalStorageAvlbl() == true){
-                        /// localStorageに対応済み
-                        localStorage.setItem('forest', '1');
-                        console.log('forestset:' + localStorage.getItem('forest'));
-                    }else{
-                        /// localStorageには未対応
-                        console.error('cannot use localStorage');
-                    }
-                    showPerfect();
-                });
-
-                function showPerfect(){
-                    forestBtn.css('visibility','hidden');
-                    forestHidden.hide('fast', function(){
-                        $('.forest .perfect').show('fast');
-                    });
-                };
-            });
-            $(function(){  
-                var innerWindow = $('.new-inner-window'),
-                    overlay = $('.new-inner-overlay'),
-                    windowBtn = $('.show-window'),
-                    closeBtn = $('.new-inner-close'),
-                    windowSpan = $('.new-inner-text span');
-
-                //OPENをクリックでモーダルを開く
-                windowBtn.on('click',function(){
-                    var id = $(this).attr('id');
-                    if(id == 'forestHintBtn'){
-                        windowSpan.text('Hint');
-                    }
-                    if(id == 'forestAnsBtn'){
-                        windowSpan.text('Answer');
-                    }
-                    innerWindow.fadeIn();
-                });
-                
-                //CLOSEをクリックでモーダルを閉じる
-                closeBtn.on('click',function(){
-                    innerWindow.fadeOut();
-                });
-                
-                //モーダルの周りをクリックで閉じる
-                overlay.on('click',function(){
-                    innerWindow.fadeOut();
-                });
-            });
-
-            function isLocalStorageAvlbl(){
-                if (typeof localStorage !== 'undefined') {
-                    try {
-                        localStorage.setItem('dummy', '1');
-                        if (localStorage.getItem('dummy') === '1') {
-                            localStorage.removeItem('dummy');
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    } catch(e) {
-                        return false;
-                    }
-                } else {
-                    return false;
-                }
-            }
-        </script>
+        <script type="text/javascript" src="{% static 'js/top.js' %}"></script>
     </body>
 </html>

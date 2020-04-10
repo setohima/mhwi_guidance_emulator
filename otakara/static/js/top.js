@@ -6,6 +6,8 @@ $(function(){
     forestHidden = $('#forestHidden'),
     successBtn = $('.new-inner-success'),
     // モーダル用
+    innerHintWindow = $('.new-inner-Hint'),
+    innerAnsWindow = $('.new-inner-Ans'),
     innerWindow = $('.new-inner-window'),
     windowSpan = $('.new-inner-text span');
 
@@ -64,18 +66,19 @@ $(function(){
         });
     };
 
-    //OPENをクリックでモーダルを開く
+    //show-windowクラスでモーダルを開く
     $('.show-window').on('click',function(){
         var area = $(this).attr('area');
         var func = $(this).attr('func');
         if(func == 'Hint'){
             // ヒント内容切り替え用関数
             showHintOf(area);
+            innerHintWindow.fadeIn();
         }else if(func == 'Ans'){
             // 回答画面内容切り替え用関数
             showAnsOf(area);
+            innerAnsWindow.fadeIn();
         }
-        innerWindow.fadeIn();
     });
 
     //CLOSEをクリックでモーダルを閉じる
@@ -90,11 +93,14 @@ $(function(){
 
     function showHintOf(area){
         windowSpan.text('HintOf'+area);
-        $('.new-inner-div').html('');
+        if(area == 'forest'){
+            $('.new-inner-div').html('<p>森のヒント</p>');
+        } else {
+            $('.new-inner-div').html('<p>荒地のヒント</p>');
+        }
     }
 
     function showAnsOf(area){
-        $('.new-inner-div').html('<button class="new-inner-success btn btn-dark">SUCCESS</button>');
         windowSpan.text('AnsOf'+area);
     }
 });

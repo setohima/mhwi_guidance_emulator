@@ -74,6 +74,9 @@
     top: 10px;
     right: 15px;
 }
+.addon span{
+    display: inline-block;
+}
 .wasteland {
     background-position: center;
     background-repeat: no-repeat;

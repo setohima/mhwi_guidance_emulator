@@ -65,8 +65,10 @@ $(function(){
     // 回答選択肢ボタンをクリックした時
     $('.ansbtn').on('click',function(){
         windowSelectedAns = $(this).text();
-        $('new-inner-decide').removeClass('btn-outline-secondary');
-        $('new-inner-decide').addClass('btn-danger');
+        $('.ansbtn').removeClass('ansbtn-selected');
+        $(this).addClass('ansbtn-selected');
+        $('.new-inner-decide').removeClass('btn-outline-secondary');
+        $('.new-inner-decide').addClass('btn-danger');
     });
 
     // パーフェクトマークを表示
@@ -106,8 +108,9 @@ $(function(){
     // new-innerを閉じる際の挙動
     function closeInner(){
         innerWindow.fadeOut();
-        $('new-inner-decide').removeClass('btn-danger');
-        $('new-inner-decide').addClass('btn-outline-secondary');
+        $('.ansbtn-selected').removeClass('ansbtn-selected');
+        $('.new-inner-decide').removeClass('btn-danger');
+        $('.new-inner-decide').addClass('btn-outline-secondary');
     }
 
     // ヒント表示時のウィンドウ内容切り替え

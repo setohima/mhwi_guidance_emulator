@@ -172,6 +172,9 @@
     z-index:auto;
     pointer-events: auto;
 }
+.ansbtn-selected{
+    border: medium solid orange;
+}
 .new-inner-text{
     line-height: 1.8;
     padding: 0 0 25px;

@@ -109,11 +109,13 @@ $(function(){
     // 回答決定ボタンをクリックした時
     windowDecideBtn.on('click',function(){
         console.log(windowSelectedAns);
-        if(windowSelectedAns == 'success'){
-            $('.new-inner-Success').fadeIn();
-            pushedSuccess();
-        }else{
-            $('.new-inner-Failed').fadeIn();
+        if(windowSelectedAns != ''){
+            if(windowSelectedAns == 'success'){
+                $('.new-inner-Success').fadeIn();
+                pushedSuccess();
+            }else{
+                $('.new-inner-Failed').fadeIn();
+            }
         }
     });
 
@@ -188,6 +190,7 @@ $(function(){
 
     // new-innerを閉じる際の挙動
     function closeInner(){
+        windowSelectedAns = '';
         innerWindow.fadeOut();
         $('.ansbtn-selected').removeClass('ansbtn-selected');
         $('.new-inner-decide').removeClass('btn-danger');

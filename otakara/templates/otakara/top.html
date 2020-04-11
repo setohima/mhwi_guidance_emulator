@@ -43,6 +43,18 @@
             .wasteland {
                 background-image: url({% static 'image/wasteland.png' %});
             }
+            .plateau {
+                background-image: url({% static 'image/plateau.png' %});
+            }
+            .valley {
+                background-image: url({% static 'image/valley.png' %});
+            }
+            .crystal {
+                background-image: url({% static 'image/crystal.png' %});
+            }
+            .frozen {
+                background-image: url({% static 'image/frozen.png' %});
+            }
             @media only screen and (max-width: 1200px) {
                 .title_head { 
                     background-image: url({% static 'image/otakara_title.png' %});
@@ -223,6 +235,199 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="jumbotron plateau area-title">
+                    <div class="row">
+                        <img class="perfect" src="{% static 'image/perfect.png' %}">
+                        <div class="col-2 col-xl-2">
+                            <button type="button" id="plateauBtn" name="plateau" class="btn btn-outline-light">▷</button>
+                        </div>
+                        <div class="col-10 col-xl-5">
+                            <h1>陸珊瑚の台地</h1>
+                        </div>
+                        <div class="col-12 col-xl-5">
+                            <div class="row addon">
+                                <div class="col-5 col-xl-12">
+                                    <span>難易度：</span><span>★★★★☆</span>
+                                </div>
+                                <div class="col-5 col-xl-12">
+                                    <span>作者：</span><span>Heavy_Ninja</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-invisible" id="plateauHidden">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="question first" id="plateau-1">
+                                    <div class="front">
+                                        <h2><b>大盾をつくった男 その後</b></h2>
+                                        <hr/>
+                                        キノコの採集に夢中になっていた俺達は「石頭の竜」に襲われた。もう駄目だと思ったその時、見知らぬ若者が奴を引きつけた。若者が持っていたのは、間違いなくあの男の「英雄の盾」だった。<br/>ここから穴を２つくぐった先、「はぐれキノコ」で落ち合う約束をし、若者は俺達を逃してくれた。
+                                    </div>
+                                    <img class="mark-success back" src="{% static 'image/success.png' %}">
+                                </div>
+                                <div class="question second" id="plateau-2">
+                                    <div class="front">
+                                        若者は奴を倒して戻ってきた。だが、あの男は若者に教えを託し死んだのだと伝えられた。俺達はあの男が最期に語った話…大盾がつくられるまでを伝え聞いた。<br/>俺達はあの男の遺品を、あの男の妻子の眠る場所に埋めてやることにした。「石頭の竜」がその身を沈めて眠るときに指し示す「2本1組の木」あの男を称え、魂を慰めたくば、そこを訪ねてくれ。
+                                    </div>
+                                    <img class="mark-success back" src="{% static 'image/perfect.png' %}">
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-4">
+                                <button type="button" id="plateauHintBtn" area="plateau" func="Hint" class="btn btn-block show-window">ヒントを見る</button>
+                            </div>
+                            <div class="col-12 col-xl-8">
+                                <button type="button" id="plateauAnsBtn" area="plateau" func="Ans" class="btn btn-block show-window">この小問の答え合わせをする</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jumbotron valley area-title">
+                    <div class="row">
+                        <img class="perfect" src="{% static 'image/perfect.png' %}">
+                        <div class="col-2 col-xl-2">
+                            <button type="button" id="valleyBtn" name="valley" class="btn btn-outline-light">▷</button>
+                        </div>
+                        <div class="col-10 col-xl-5">
+                            <h1>瘴気の谷</h1>
+                        </div>
+                        <div class="col-12 col-xl-5">
+                            <div class="row addon">
+                                <div class="col-5 col-xl-12">
+                                    <span>難易度：</span><span>★★★★☆</span>
+                                </div>
+                                <div class="col-5 col-xl-12">
+                                    <span>作者：</span><span>Heavy_Ninja</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-invisible" id="valleyHidden">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="question first" id="valley-1">
+                                    <div class="front">
+                                        <h2><b>大盾をつくった男 その後</b></h2>
+                                        <hr/>
+                                        キノコの採集に夢中になっていた俺達は「石頭の竜」に襲われた。もう駄目だと思ったその時、見知らぬ若者が奴を引きつけた。若者が持っていたのは、間違いなくあの男の「英雄の盾」だった。<br/>ここから穴を２つくぐった先、「はぐれキノコ」で落ち合う約束をし、若者は俺達を逃してくれた。
+                                    </div>
+                                    <img class="mark-success back" src="{% static 'image/success.png' %}">
+                                </div>
+                                <div class="question second" id="valley-2">
+                                    <div class="front">
+                                        若者は奴を倒して戻ってきた。だが、あの男は若者に教えを託し死んだのだと伝えられた。俺達はあの男が最期に語った話…大盾がつくられるまでを伝え聞いた。<br/>俺達はあの男の遺品を、あの男の妻子の眠る場所に埋めてやることにした。「石頭の竜」がその身を沈めて眠るときに指し示す「2本1組の木」あの男を称え、魂を慰めたくば、そこを訪ねてくれ。
+                                    </div>
+                                    <img class="mark-success back" src="{% static 'image/perfect.png' %}">
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-4">
+                                <button type="button" id="valleyHintBtn" area="valley" func="Hint" class="btn btn-block show-window">ヒントを見る</button>
+                            </div>
+                            <div class="col-12 col-xl-8">
+                                <button type="button" id="valleyAnsBtn" area="valley" func="Ans" class="btn btn-block show-window">この小問の答え合わせをする</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jumbotron crystal area-title">
+                    <div class="row">
+                        <img class="perfect" src="{% static 'image/perfect.png' %}">
+                        <div class="col-2 col-xl-2">
+                            <button type="button" id="crystalBtn" name="crystal" class="btn btn-outline-light">▷</button>
+                        </div>
+                        <div class="col-10 col-xl-5">
+                            <h1>龍結晶の地</h1>
+                        </div>
+                        <div class="col-12 col-xl-5">
+                            <div class="row addon">
+                                <div class="col-5 col-xl-12">
+                                    <span>難易度：</span><span>★★★★☆</span>
+                                </div>
+                                <div class="col-5 col-xl-12">
+                                    <span>作者：</span><span>Heavy_Ninja</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-invisible" id="crystalHidden">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="question first" id="crystal-1">
+                                    <div class="front">
+                                        <h2><b>大盾をつくった男 その後</b></h2>
+                                        <hr/>
+                                        キノコの採集に夢中になっていた俺達は「石頭の竜」に襲われた。もう駄目だと思ったその時、見知らぬ若者が奴を引きつけた。若者が持っていたのは、間違いなくあの男の「英雄の盾」だった。<br/>ここから穴を２つくぐった先、「はぐれキノコ」で落ち合う約束をし、若者は俺達を逃してくれた。
+                                    </div>
+                                    <img class="mark-success back" src="{% static 'image/success.png' %}">
+                                </div>
+                                <div class="question second" id="crystal-2">
+                                    <div class="front">
+                                        若者は奴を倒して戻ってきた。だが、あの男は若者に教えを託し死んだのだと伝えられた。俺達はあの男が最期に語った話…大盾がつくられるまでを伝え聞いた。<br/>俺達はあの男の遺品を、あの男の妻子の眠る場所に埋めてやることにした。「石頭の竜」がその身を沈めて眠るときに指し示す「2本1組の木」あの男を称え、魂を慰めたくば、そこを訪ねてくれ。
+                                    </div>
+                                    <img class="mark-success back" src="{% static 'image/perfect.png' %}">
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-4">
+                                <button type="button" id="crystalHintBtn" area="crystal" func="Hint" class="btn btn-block show-window">ヒントを見る</button>
+                            </div>
+                            <div class="col-12 col-xl-8">
+                                <button type="button" id="crystalAnsBtn" area="crystal" func="Ans" class="btn btn-block show-window">この小問の答え合わせをする</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jumbotron frozen area-title">
+                    <div class="row">
+                        <img class="perfect" src="{% static 'image/perfect.png' %}">
+                        <div class="col-2 col-xl-2">
+                            <button type="button" id="frozenBtn" name="frozen" class="btn btn-outline-light">▷</button>
+                        </div>
+                        <div class="col-10 col-xl-5">
+                            <h1>渡りの凍て地</h1>
+                        </div>
+                        <div class="col-12 col-xl-5">
+                            <div class="row addon">
+                                <div class="col-5 col-xl-12">
+                                    <span>難易度：</span><span>★★★★☆</span>
+                                </div>
+                                <div class="col-5 col-xl-12">
+                                    <span>作者：</span><span>Heavy_Ninja</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-invisible" id="frozenHidden">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="question first" id="frozen-1">
+                                    <div class="front">
+                                        <h2><b>大盾をつくった男 その後</b></h2>
+                                        <hr/>
+                                        キノコの採集に夢中になっていた俺達は「石頭の竜」に襲われた。もう駄目だと思ったその時、見知らぬ若者が奴を引きつけた。若者が持っていたのは、間違いなくあの男の「英雄の盾」だった。<br/>ここから穴を２つくぐった先、「はぐれキノコ」で落ち合う約束をし、若者は俺達を逃してくれた。
+                                    </div>
+                                    <img class="mark-success back" src="{% static 'image/success.png' %}">
+                                </div>
+                                <div class="question second" id="frozen-2">
+                                    <div class="front">
+                                        若者は奴を倒して戻ってきた。だが、あの男は若者に教えを託し死んだのだと伝えられた。俺達はあの男が最期に語った話…大盾がつくられるまでを伝え聞いた。<br/>俺達はあの男の遺品を、あの男の妻子の眠る場所に埋めてやることにした。「石頭の竜」がその身を沈めて眠るときに指し示す「2本1組の木」あの男を称え、魂を慰めたくば、そこを訪ねてくれ。
+                                    </div>
+                                    <img class="mark-success back" src="{% static 'image/perfect.png' %}">
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-4">
+                                <button type="button" id="frozenHintBtn" area="frozen" func="Hint" class="btn btn-block show-window">ヒントを見る</button>
+                            </div>
+                            <div class="col-12 col-xl-8">
+                                <button type="button" id="frozenAnsBtn" area="frozen" func="Ans" class="btn btn-block show-window">この小問の答え合わせをする</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="jumbotron explain">

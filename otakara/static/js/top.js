@@ -164,8 +164,6 @@ $(function(){
             return;
         }
         if(numAreaQuiz[area] != 0){
-            console.log('#'+area+'-'+numAreaQuiz[area]+' > .mark-success');
-            console.log('#'+area+'-'+tmp);
             $('#'+area+'-'+numAreaQuiz[area]+' > .mark-success').show('fast');
             var tmp = numAreaQuiz[area] + 1;
             $('#'+area+'-'+tmp).show('fast');

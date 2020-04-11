@@ -201,10 +201,7 @@
         background-size: cover;
         background-position: top left;
     }
-    .forest h1 {
-        font-size: 9.55vw;
-    }
-    .wasteland h1 {
+    .area-title h1 {
         font-size: 8vw;
     }
     .question h2 {

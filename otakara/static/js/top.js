@@ -6,6 +6,7 @@ $(function(){
     innerHintWindow = $('.new-inner-Hint'),
     innerAnsWindow = $('.new-inner-Ans'),
     innerWindow = $('.new-inner-window'),
+    windowDecideBtn = $('.new-inner-decide'),
     windowSpan = $('.new-inner-text span'),
     windowArea = '', // 表示中の地域
     windowFunc = '', // 表示中の機能 Ans or Hint
@@ -20,15 +21,15 @@ $(function(){
         }
     });
 
-    // エリアごとのボタンをクリックするとそのエリアの問題文を表示する
-    allButton.on('click', function(){
-        onAreaClicked($(this), $('#'+$(this).attr('name')+'Hidden'));
-    });
-
     // 問題文表示中に画面リサイズすると縦横幅が変わらない不具合に対応
     $(window).resize(function(){
         allHidden.css('width', 'auto');
         allHidden.css('height', 'auto');
+    });
+
+    // エリアごとのボタンをクリックするとそのエリアの問題文を表示する
+    allButton.on('click', function(){
+        onAreaClicked($(this), $('#'+$(this).attr('name')+'Hidden'));
     });
 
     // 問題文表示用ボタンクリック時の挙動
@@ -46,40 +47,6 @@ $(function(){
         }
     };
 
-    // successをクリックでセッション追加
-    $('.new-inner-success').on('click',function(){
-        if(windowArea != ''){
-            if (isLocalStorageAvlbl() == true){
-                /// localStorageに対応済み
-                localStorage.setItem(windowArea, '1');
-            }else{
-                /// localStorageには未対応
-                console.error('cannot use localStorage');
-            }
-            showPerfect(windowArea);
-        }else{
-            console.error('windowArea is none');
-        }
-    });
-
-    // 回答選択肢ボタンをクリックした時
-    $('.ansbtn').on('click',function(){
-        windowSelectedAns = $(this).text();
-        $('.ansbtn').removeClass('ansbtn-selected');
-        $(this).addClass('ansbtn-selected');
-        $('.new-inner-decide').removeClass('btn-outline-secondary');
-        $('.new-inner-decide').addClass('btn-danger');
-    });
-
-    // パーフェクトマークを表示
-    function showPerfect(area){
-        $('#'+area+'Btn').text('▷');
-        $('#'+area+'Hidden').hide('fast', function(){
-            $('.'+area+' .mark-success').show('fast');
-            $('.'+area+' .perfect').show('fast');
-        });
-    };
-
     //show-windowクラスでモーダルを開く
     $('.show-window').on('click',function(){
         windowArea = $(this).attr('area');
@@ -93,6 +60,72 @@ $(function(){
             showAnsOf(windowArea);
             innerAnsWindow.fadeIn();
         }
+    });
+
+    // ヒント表示時のウィンドウ内容切り替え
+    function showHintOf(area){
+        windowSpan.text('HintOf'+area);
+        if(area == 'forest'){
+            $('.new-inner-div').html('<p>森のヒント</p>');
+        } else {
+            $('.new-inner-div').html('<p>荒地のヒント</p>');
+        }
+    }
+
+    // 回答表示時のウィンドウ内容切り替え
+    function showAnsOf(area){
+        windowSpan.text('AnsOf'+area);
+    }
+
+    // 回答選択肢ボタンをクリックした時
+    $('.ansbtn').on('click',function(){
+        windowSelectedAns = $(this).text();
+        console.log(windowSelectedAns);
+        $('.ansbtn').removeClass('ansbtn-selected');
+        $(this).addClass('ansbtn-selected');
+        windowDecideBtn.removeClass('btn-outline-secondary');
+        windowDecideBtn.addClass('btn-danger');
+    });
+
+    // 回答決定ボタンをクリックした時
+    windowDecideBtn.on('click',function(){
+        console.log(windowSelectedAns);
+        if(windowSelectedAns == 'success'){
+            $('.new-inner-Success').fadeIn();
+            pushedSuccess();
+        }else{
+            $('.new-inner-Failed').fadeIn();
+        }
+    });
+
+    // 正解を選んだ際にセッション追加
+    function pushedSuccess(){
+        if(windowArea != ''){
+            if (isLocalStorageAvlbl() == true){
+                /// localStorageに対応済み
+                localStorage.setItem(windowArea, '1');
+            }else{
+                /// localStorageには未対応
+                console.error('cannot use localStorage');
+            }
+            showPerfect(windowArea);
+        }else{
+            console.error('windowArea is none');
+        }
+    };
+
+    // パーフェクトマークを表示
+    function showPerfect(area){
+        $('#'+area+'Btn').text('▷');
+        $('#'+area+'Hidden').hide('fast', function(){
+            $('.'+area+' .mark-success').show('fast');
+            $('.'+area+' .perfect').show('fast');
+        });
+    };
+
+    //回答を選び直すボタン
+    $('.new-inner-return').on('click',function(){
+        $('.new-inner-Failed').fadeOut();
     });
 
     //CLOSEをクリックでモーダルを閉じる
@@ -111,21 +144,6 @@ $(function(){
         $('.ansbtn-selected').removeClass('ansbtn-selected');
         $('.new-inner-decide').removeClass('btn-danger');
         $('.new-inner-decide').addClass('btn-outline-secondary');
-    }
-
-    // ヒント表示時のウィンドウ内容切り替え
-    function showHintOf(area){
-        windowSpan.text('HintOf'+area);
-        if(area == 'forest'){
-            $('.new-inner-div').html('<p>森のヒント</p>');
-        } else {
-            $('.new-inner-div').html('<p>荒地のヒント</p>');
-        }
-    }
-
-    // 回答表示時のウィンドウ内容切り替え
-    function showAnsOf(area){
-        windowSpan.text('AnsOf'+area);
     }
 });
 

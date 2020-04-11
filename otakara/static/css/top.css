@@ -121,6 +121,9 @@
 .show-window {
     background-color: rgba(255,255,255,1);
     margin-top: 1em;
+    width: 85%;
+    margin-right: auto;
+    margin-left: auto;
 }
 .new-inner-window{
     display: none;
@@ -140,14 +143,15 @@
     top: 0;
     left: 0;
     background: rgba(0,0,0,0.5);
-    z-index:502;
+    z-index:auto;
 }
 .new-inner-body{
     position: relative;
     display: table;
     width: 100%;
     height: 100%;
-    z-index:503;
+    z-index:auto;
+    pointer-events: none;
 }
 .new-inner-main{
     position: relative;
@@ -155,7 +159,7 @@
     text-align: center;
     vertical-align: middle;
     padding: 25px;
-    z-index:504;
+    z-index:auto;
 }
 .new-inner-content{
     position: relative;
@@ -164,7 +168,7 @@
     background: #fff;
     padding: 25px;
     box-sizing: border-box;
-    z-index:505;
+    z-index:auto;
 }
 .new-inner-text{
     line-height: 1.8;

@@ -2,16 +2,14 @@ $(function(){
     // 問題文用
     var allHidden = $('.btn-invisible'),
     allButton = $('.btn-outline-light'),
-    forestBtn = $('#forestBtn'),
-    forestHidden = $('#forestHidden'),
-    successBtn = $('.new-inner-success'),
     // モーダル用
     innerHintWindow = $('.new-inner-Hint'),
     innerAnsWindow = $('.new-inner-Ans'),
     innerWindow = $('.new-inner-window'),
     windowSpan = $('.new-inner-text span'),
-    windowArea = '',
-    windowFunc = '';
+    windowArea = '', // 表示中の地域
+    windowFunc = '', // 表示中の機能 Ans or Hint
+    windowSelectedAns = ''; // 表示中に選択している回答
 
     // ページ読み込み時、localStrageからクリア状況を読み取り反映
     $(window).on('load', function(){
@@ -49,7 +47,7 @@ $(function(){
     };
 
     // successをクリックでセッション追加
-    successBtn.on('click',function(){
+    $('.new-inner-success').on('click',function(){
         if(windowArea != ''){
             if (isLocalStorageAvlbl() == true){
                 /// localStorageに対応済み
@@ -64,12 +62,15 @@ $(function(){
         }
     });
 
+    // 回答選択肢ボタンをクリックした時
+    $('.ansbtn').on('click',function(){
+        windowSelectedAns = $(this).text();
+    });
+
     // パーフェクトマークを表示
     function showPerfect(area){
         $('#'+area+'Btn').text('▷');
         $('#'+area+'Hidden').hide('fast', function(){
-            console.log(area);
-            console.log($('.'+area+' .perfect'));
             $('.'+area+' .mark-success').show('fast');
             $('.'+area+' .perfect').show('fast');
         });
@@ -97,6 +98,7 @@ $(function(){
     
     //モーダルの周りをクリックで閉じる
     $('.new-inner-overlay').on('click',function(){
+        console.log('hoge');
         innerWindow.fadeOut();
     });
 

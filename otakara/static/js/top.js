@@ -10,22 +10,40 @@ $(function(){
     windowSpan = $('.new-inner-text span'),
     windowArea = '', // 表示中の地域
     windowFunc = '', // 表示中の機能 Ans or Hint
-    windowSelectedAns = ''; // 表示中に選択している回答
+    windowSelectedAns = '', // 表示中に選択している回答
+    // 進捗管理
+    numAreaQuiz = {'forest':0, 'wasteland':0, 'plateau':0, 'valley':0, 'crystal':0, 'frozen':0}, // 0スタート、数値はクリアした問題数;
+    numMaxAreaQuiz = {'forest':1,'wasteland':2,'plateau':3,'valley':3, 'crystal':3, 'frozen':2}, // 全問正解に必要な問題数;
+    strArea = ['forest', 'wasteland', 'plateau', 'valley', 'crystal', 'frozen'];
 
     // ページ読み込み時、localStrageからクリア状況を読み取り反映
     $(window).on('load', function(){
         if(isLocalStorageAvlbl() == true){
-            if(localStorage.getItem('forest') == '1'){
-                showPerfect('forest');
-            }
+            strArea.forEach(area => {
+                if(localStorage.getItem(area) != null){
+                    numAreaQuiz[area] = parseInt(localStorage.getItem(area));
+                    console.log(numAreaQuiz);
+                }
+                if(numAreaQuiz[area] == numMaxAreaQuiz[area]){
+                    showPerfect(area);
+                }else if(numAreaQuiz[area] != 0){
+                    console.log(area+' is not 0')
+                    showSuccess(area);
+                }
+            });
         }
+        console.log(numAreaQuiz);
     });
 
     // 問題文表示中に画面リサイズすると縦横幅が変わらない不具合に対応
     $(window).resize(function(){
+        adjust();
+    });
+
+    function adjust(){
         allHidden.css('width', 'auto');
         allHidden.css('height', 'auto');
-    });
+    }
 
     // エリアごとのボタンをクリックするとそのエリアの問題文を表示する
     allButton.on('click', function(){
@@ -75,6 +93,7 @@ $(function(){
     // 回答表示時のウィンドウ内容切り替え
     function showAnsOf(area){
         windowSpan.text('AnsOf'+area);
+        console.log(numAreaQuiz);
     }
 
     // 回答選択肢ボタンをクリックした時
@@ -101,27 +120,58 @@ $(function(){
     // 正解を選んだ際にセッション追加
     function pushedSuccess(){
         if(windowArea != ''){
+            // 進捗管理をインクリメント
+            numAreaQuiz[windowArea] = numAreaQuiz[windowArea]+1;
+            
+            // localSessionが利用可能なら進捗保存
             if (isLocalStorageAvlbl() == true){
                 /// localStorageに対応済み
-                localStorage.setItem(windowArea, '1');
+                localStorage.setItem(windowArea, numAreaQuiz[windowArea]);
             }else{
                 /// localStorageには未対応
                 console.error('cannot use localStorage');
             }
-            showPerfect(windowArea);
+
+            // 進捗の値=最大値ならperfect処理
+            // そうでなければsuccess処理
+            if(numAreaQuiz[windowArea] == numMaxAreaQuiz[windowArea]){
+                showPerfect(windowArea);
+            }else{
+                showSuccess(windowArea);
+            }
+            console.log(numAreaQuiz);
         }else{
             console.error('windowArea is none');
         }
     };
 
-    // パーフェクトマークを表示
+    // 全問正解時処理
     function showPerfect(area){
         $('#'+area+'Btn').text('▷');
         $('#'+area+'Hidden').hide('fast', function(){
             $('.'+area+' .mark-success').show('fast');
             $('.'+area+' .perfect').show('fast');
+            $('.'+area+' .show-window').hide('fast');
         });
     };
+
+    // 途中正解時処理
+    function showSuccess(area){
+        //全問正解してたら処理飛ばす
+        if(numAreaQuiz[area] == numMaxAreaQuiz[area]){
+            console.log('success but perfect');
+            showPerfect();
+            return;
+        }
+        if(numAreaQuiz[area] != 0){
+            console.log('#'+area+'-'+numAreaQuiz[area]+' > .mark-success');
+            console.log('#'+area+'-'+tmp);
+            $('#'+area+'-'+numAreaQuiz[area]+' > .mark-success').show('fast');
+            var tmp = numAreaQuiz[area] + 1;
+            $('#'+area+'-'+tmp).show('fast');
+            adjust();
+        }
+    }
 
     //回答を選び直すボタン
     $('.new-inner-return').on('click',function(){
@@ -145,6 +195,20 @@ $(function(){
         $('.new-inner-decide').removeClass('btn-danger');
         $('.new-inner-decide').addClass('btn-outline-secondary');
     }
+    
+    //りせっとぼたん
+    $('.btn-reset').on('click',function(){
+        console.log('reset');
+        numAreaQuiz = {'forest':0, 'wasteland':0, 'plateau':0, 'valley':0, 'crystal':0, 'frozen':0};
+        if(isLocalStorageAvlbl() == true){
+            localStorage.removeItem('forest');
+            localStorage.removeItem('wasteland');
+        }
+        $('.mark-success').hide('fast');
+        $('.perfect').hide('fast');
+        $('.show-window').show('fast');
+        adjust();
+    });
 });
 
 // localStrageが利用できるかどうかを判別

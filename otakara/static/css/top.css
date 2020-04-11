@@ -67,22 +67,6 @@
     margin-top: 20px;
     position: relative;
 }
-.perfect {
-    display: none;
-    position: absolute;
-    width: auto;
-    height: 8em;
-    top: 10px;
-    right: 15px;
-}
-.mark-success {
-    display: none;
-    position: absolute;
-    width: auto;
-    height: 8em;
-    bottom: 10px;
-    right: 15px;
-}
 .back {
     z-index:10;
 }
@@ -108,6 +92,28 @@
     padding: 20px;
     margin-top: 10px;
     position: relative;
+}
+.second {
+    display:none;
+}
+.third {
+    display:none;
+}
+.perfect {
+    display: none;
+    position: absolute;
+    width: auto;
+    height: 8em;
+    top: 10px;
+    right: 15px;
+}
+.mark-success {
+    display: none;
+    position: absolute;
+    width: auto;
+    height: 8em;
+    bottom: 10px;
+    right: 15px;
 }
 .question > hr {
     background-color: saddlebrown;

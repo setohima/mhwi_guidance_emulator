@@ -160,6 +160,7 @@
     vertical-align: middle;
     padding: 25px;
     z-index:auto;
+    pointer-events: none;
 }
 .new-inner-content{
     position: relative;
@@ -169,6 +170,7 @@
     padding: 25px;
     box-sizing: border-box;
     z-index:auto;
+    pointer-events: auto;
 }
 .new-inner-text{
     line-height: 1.8;

@@ -65,6 +65,8 @@ $(function(){
     // 回答選択肢ボタンをクリックした時
     $('.ansbtn').on('click',function(){
         windowSelectedAns = $(this).text();
+        $('new-inner-decide').removeClass('btn-outline-secondary');
+        $('new-inner-decide').addClass('btn-danger');
     });
 
     // パーフェクトマークを表示
@@ -93,15 +95,22 @@ $(function(){
 
     //CLOSEをクリックでモーダルを閉じる
     $('.new-inner-close').on('click',function(){
-        innerWindow.fadeOut();
+        closeInner();
     });
     
     //モーダルの周りをクリックで閉じる
     $('.new-inner-overlay').on('click',function(){
-        console.log('hoge');
-        innerWindow.fadeOut();
+        closeInner();
     });
 
+    // new-innerを閉じる際の挙動
+    function closeInner(){
+        innerWindow.fadeOut();
+        $('new-inner-decide').removeClass('btn-danger');
+        $('new-inner-decide').addClass('btn-outline-secondary');
+    }
+
+    // ヒント表示時のウィンドウ内容切り替え
     function showHintOf(area){
         windowSpan.text('HintOf'+area);
         if(area == 'forest'){
@@ -111,6 +120,7 @@ $(function(){
         }
     }
 
+    // 回答表示時のウィンドウ内容切り替え
     function showAnsOf(area){
         windowSpan.text('AnsOf'+area);
     }

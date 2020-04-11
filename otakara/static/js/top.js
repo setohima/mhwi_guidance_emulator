@@ -149,6 +149,7 @@ $(function(){
 
     // 全問正解時処理
     function showPerfect(area){
+        console.log(area);
         $('#'+area+'Btn').text('▷');
         $('#'+area+'Hidden').hide('fast', function(){
             $('.'+area+' .mark-success').show('fast');
@@ -202,8 +203,9 @@ $(function(){
         console.log('reset');
         numAreaQuiz = {'forest':0, 'wasteland':0, 'plateau':0, 'valley':0, 'crystal':0, 'frozen':0};
         if(isLocalStorageAvlbl() == true){
-            localStorage.removeItem('forest');
-            localStorage.removeItem('wasteland');
+            strArea.forEach(area => {
+                localStorage.removeItem(area);
+            });
         }
         $('.mark-success').hide('fast');
         $('.perfect').hide('fast');

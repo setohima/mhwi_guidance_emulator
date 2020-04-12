@@ -202,6 +202,10 @@
     display: inline-block;
     text-align: left;
 }
+.image-hint {
+    width:100%;
+    height:auto;
+}
 @media only screen and (max-width: 1200px) {
     /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
     .title_head, .forest, .wasteland{

@@ -84,7 +84,7 @@ $(function(){
     function showHintOf(area){
         windowSpan.text('HintOf'+area);
         if(area == 'forest'){
-            $('.new-inner-div').html('<p>本編にも登場した「滝隠し洞窟」から、滝の水源を上流へと辿って行くと…？</p><img src="/static/image/forest-1-hint.jpg" class="forest-1-hint image-hint" />');
+            $('.new-inner-div').html('<p>本編にも登場した「滝隠し洞窟」から、滝の水源を上流へと辿って行くと…？</p><img src="/static/image/forest-1-Hint.jpg" class="forest-1-hint image-hint" />');
         } else {
             $('.new-inner-div').html('<p>荒地のヒント</p>');
         }

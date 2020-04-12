@@ -221,11 +221,29 @@
     -ms-filter: brightness(1.5);
     filter: brightness(1.5);
 }
+.afterword {
+    background-color: rgba(102,102,102, 0.5);
+    color: white;
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+    position: relative;
+}
+.afterword img{
+    width: 100%;
+    min-width: 2em;
+    max-width: 5em;
+}
 @media only screen and (max-width: 1200px) {
     /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
-    .title_head, .forest, .wasteland{
+    .title_head{
         background-repeat: repeat;
         background-size: cover;
+        background-position: top left;
+    }
+    .forest, .wasteland{
+        background-repeat: repeat;
+        background-size: 100%;
         background-position: top left;
     }
     .area-title h1 {

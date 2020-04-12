@@ -82,7 +82,7 @@ $(function(){
 
     // ヒント表示時のウィンドウ内容切り替え
     function showHintOf(area){
-        windowSpan.text('HintOf'+area);
+        windowSpan.text('ヒント');
         if(area == 'forest'){
             $('.new-inner-div').html('<p>本編にも登場した「滝隠し洞窟」から、滝の水源を上流へと辿って行くと…？</p><img src="/static/image/forest-1-Hint.jpg" class="forest-1-hint image-hint" />');
         } else {
@@ -92,14 +92,12 @@ $(function(){
 
     // 回答表示時のウィンドウ内容切り替え
     function showAnsOf(area){
-        windowSpan.text('AnsOf'+area);
-        console.log(numAreaQuiz);
+        windowSpan.text('オタカラの場所の画像を選んでください');
     }
 
     // 回答選択肢ボタンをクリックした時
     $('.ansbtn').on('click',function(){
         windowSelectedAns = $(this).text();
-        console.log(windowSelectedAns);
         $('.ansbtn').removeClass('ansbtn-selected');
         $(this).addClass('ansbtn-selected');
         windowDecideBtn.removeClass('btn-outline-secondary');
@@ -108,7 +106,6 @@ $(function(){
 
     // 回答決定ボタンをクリックした時
     windowDecideBtn.on('click',function(){
-        console.log(windowSelectedAns);
         if(windowSelectedAns != ''){
             if(windowSelectedAns == 'success'){
                 $('.new-inner-Success').fadeIn();

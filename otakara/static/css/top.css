@@ -118,10 +118,15 @@
 .frozen-map1 {
     height:35vmax;
     width:auto;
+    display: block;
+    margin: auto;
 }
 .frozen-map2 {
     height:auto;
     width:32vmax;
+    max-width: 100%;
+    display: block;
+    margin: auto;
 }
 .question > hr {
     background-color: saddlebrown;
@@ -175,16 +180,16 @@
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    padding: 25px;
+    padding: 5%;
     z-index:auto;
     pointer-events: none;
 }
 .new-inner-content{
     position: relative;
     display: inline-block;
-    width: 70vw;
+    width: 100%;
     background: #fff;
-    padding: 25px;
+    padding: 10px;
     box-sizing: border-box;
     z-index:auto;
     pointer-events: auto;
@@ -202,9 +207,19 @@
     display: inline-block;
     text-align: left;
 }
+.new-inner-btn {
+    margin-top: 10px;
+}
 .image-hint {
     width:100%;
     height:auto;
+}
+.forest-1-hint {
+    -webkit-filter: brightness(1.5);
+    -moz-filter: brightness(1.5);
+    -o-filter: brightness(1.5);
+    -ms-filter: brightness(1.5);
+    filter: brightness(1.5);
 }
 @media only screen and (max-width: 1200px) {
     /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
@@ -230,5 +245,8 @@
     }
     .container > .jumbotron > .row {
         height: 15vmax;
+    }
+    .new-inner-main{
+        padding: 10px;
     }
 }

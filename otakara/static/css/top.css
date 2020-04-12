@@ -237,13 +237,12 @@
 @media only screen and (max-width: 1200px) {
     /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
     .title_head{
-        background-repeat: repeat;
-        background-size: cover;
-        background-position: top left;
+        background-repeat:repeat!important;
+        background-position: center center!important;
     }
     .forest, .wasteland{
         background-repeat: repeat;
-        background-size: 100%;
+        background-size: cover;
         background-position: top left;
     }
     .area-title h1 {
@@ -266,5 +265,12 @@
     }
     .new-inner-main{
         padding: 10px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .title_head{
+        background-position: center!important;
+        background-repeat: no-repeat!important;
+        background-size: cover!important;
     }
 }

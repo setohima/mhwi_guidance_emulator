@@ -225,9 +225,11 @@
     background-color: rgba(102,102,102, 0.5);
     color: white;
     width: 100%;
-    padding: 20px;
     margin-top: 10px;
     position: relative;
+}
+.afterword p{
+    margin-bottom: 0px;
 }
 .afterword img{
     width: 100%;

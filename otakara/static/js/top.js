@@ -96,6 +96,22 @@ $(function(){
                     $('.new-inner-div').html('<p>「白しっぽ草」は本編にも登場したキーワードだ。</p>');
                 }
                 break;
+            case 'plateau':
+                if(numAreaQuiz[area] == 0){
+                    $('.new-inner-div').html('<p>三又滑り台は真ん中の滑り台が一番低くて、両側の滑り台を潜り抜けて「蜜玉広場」に続くんだ。「切り傷注意の実」は十個くらい実がなってた。近くに「爆発注意の実」もあったよ。</p>');
+                }else if(numAreaQuiz[area] == 1){
+                    $('.new-inner-div').html('<p>「ゲコゲコ」は触ると危ない。眠くなるのとシビれて動けなくなるのがいる。ぶつかりそうだったのはシビれるほう。「パチパチの実」は赤くて、ちょっと叩くとすぐに地面に落ちてくる。</p>');
+                }else if(numAreaQuiz[area] == 2){
+                    $('.new-inner-div').html('<p>「空飛ぶ謎の家」はチョウサダンの船だって仲間が言ってたな。キネンヒンの近くには赤い実がなってる草と、ピカピカ虫もいたっけ。それと、ドデカピンク竜は毒を持ってるから気を付けること。</p>');
+                }
+                break;
+            case 'frozen':
+                if(numAreaQuiz[area] == 0){
+                    $('.new-inner-div').html('<p>獣纏族の大いなる挑戦……『氷の海の渦』に飛び込んで、『△壁画』のある入り江まで泳いで戻ってくる。挑戦の場から身を翻せば修練の場がある。修練の場の傍に『◎むくろの小口』あり。</p>');
+                }else if(numAreaQuiz[area] == 1){
+                    $('.new-inner-div').html('<p>『□道』はワレらの領域とチョウサダンの領域を絆ぐ幻の一本道。来た道戻ること叶わず。</p>');
+                }
+                break;
             default:
                 $('.new-inner-div').html('<p>'+area+'のヒント</p>');
                 break;

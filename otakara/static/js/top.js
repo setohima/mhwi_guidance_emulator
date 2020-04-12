@@ -83,16 +83,31 @@ $(function(){
     // ヒント表示時のウィンドウ内容切り替え
     function showHintOf(area){
         windowSpan.text('ヒント');
-        if(area == 'forest'){
-            $('.new-inner-div').html('<p>本編にも登場した「滝隠し洞窟」から、滝の水源を上流へと辿って行くと…？</p><img src="/static/image/forest-1-Hint.jpg" class="forest-1-hint image-hint" />');
-        } else {
-            $('.new-inner-div').html('<p>荒地のヒント</p>');
+        switch(area){
+            case 'forest':
+                $('.new-inner-div').html('<p>本編にも登場した「滝隠し洞窟」から、滝の水源を上流へと辿って行くと…？</p><img src="/static/image/forest-1-Hint.jpg" class="forest-1-hint image-hint" />');
+                break;
+            case 'valley':
+                if(numAreaQuiz[area] == 0){
+                    $('.new-inner-div').html('<p>ドスギルオスの住処</p>');
+                }else if(numAreaQuiz[area] == 1){
+                    $('.new-inner-div').html('<p>ねぐらから東に出るのが「ひげの口」</p>');
+                }else if(numAreaQuiz[area] == 2){
+                    $('.new-inner-div').html('<p>「白しっぽ草」は本編にも登場したキーワードだ。</p>');
+                }
+                break;
+            default:
+                $('.new-inner-div').html('<p>'+area+'のヒント</p>');
+                break;
         }
     }
 
     // 回答表示時のウィンドウ内容切り替え
     function showAnsOf(area){
         windowSpan.text('オタカラの場所の画像を選んでください');
+        if(area == 'forest'){
+            //hoge
+        }
     }
 
     // 回答選択肢ボタンをクリックした時

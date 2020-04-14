@@ -221,17 +221,35 @@
     -ms-filter: brightness(1.5);
     filter: brightness(1.5);
 }
+.over-icon {
+    position: absolute;
+    width:11vmax;
+    top: 0;
+    left: 0;
+    margin-top:20px;
+    margin-left:-10px;
+    max-height:100px;
+    max-width: 100px;
+}
 .afterword {
+    position: relative;
     background-color: white;
-    color: black;
+    color: rgb(66, 66, 66);
     width: 100%;
     margin-top: 20px;
     position: relative;
     text-shadow: 0px 0px 0px #000000;
 }
-.afterword .no-padding {
+.no-padding {
     padding-left:0;
     padding-right:0;
+}
+.no-margin{
+    margin-left:0!important;
+    margin-right:0!important;
+}
+.spacing{
+    letter-spacing:-0.2em;
 }
 .afterword .icon{
     height: 5em;
@@ -241,15 +259,16 @@
     min-height: 24px;
 }
 .afterword .note-icon{
-    width: 12vw;
+    width: 100%;
+    max-width: 200px;
 }
 .afterword .pixiv-icon{
-    width: 9vw;
+    width: 12vw;
     min-height: 24px;
     min-width: 52px;
 }
 .afterword .job{
-    background: linear-gradient(45deg, white ,gray);
+    background: linear-gradient(45deg, white 25% ,gray);
     color: white;
 }
 @media only screen and (max-width: 1200px) {

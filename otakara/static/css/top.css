@@ -249,22 +249,32 @@
     margin-left:0!important;
     margin-right:0!important;
 }
+.no-wrap{
+    display: inline-block;
+}
 .spacing{
     letter-spacing:-0.2em;
 }
 .afterword .h3{
     margin-bottom: 0;
+    font-size: 2.25rem;
+}
+.afterword .h5{
+    font-size: 2rem;
 }
 .afterword .icon{
     height: 5em;
 }
 .afterword .twitter-icon{
     width:100%;
-    max-width:120px;
+    max-width:80px;
+    min-width:20px;
 }
 .afterword .note-icon{
     width: 100%;
     max-width: 200px;
+    min-width:50px;
+    min-height:16px;
 }
 .afterword .pixiv-icon{
     width: 66%;
@@ -276,8 +286,8 @@
     background-size: auto 100%;
     color: white;
     margin-bottom:0;
-    padding-top:6.25%;
-    padding-bottom:6.25%;
+    padding-top:3%;
+    padding-bottom:3%;
 }
 @media only screen and (max-width: 1200px) {
     /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */
@@ -312,10 +322,55 @@
         padding: 10px;
     }
 }
+@media only screen and (max-width: 991px){
+    .afterword .h5 {
+        font-size: 1.75rem;
+    }
+    .afterword .h3 {
+        font-size: 2rem;
+    }
+    .afterword .job{
+        padding-top: 3.5%;
+        padding-bottom: 3.5%;
+    }
+}
 @media only screen and (max-width: 767px) {
-    .title_head{
+    .title_head, .credit{
         background-position: center!important;
         background-repeat: no-repeat!important;
         background-size: cover!important;
+    }
+}
+@media only screen and (max-width: 600px){
+    .afterword .h5 {
+        font-size: 1.25rem;
+    }
+    .afterword .h3 {
+        font-size: 1.5rem;
+    }
+}
+@media only screen and (max-width: 440px){
+    .afterword .h5 {
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 408px){
+    .afterword .h5{
+        font-size: 0.75rem;
+    }
+    .afterword .job{
+        padding-top: 7%;
+        padding-bottom: 7%;
+    }
+}
+@media only screen and (max-width: 323px) {
+    .afterword .job {
+        padding-top:10%;
+        padding-bottom:10%;
+    }
+}
+@media only screen and (max-width: 294px){
+    .afterword .h3{
+        font-size: 1.25rem;
     }
 }

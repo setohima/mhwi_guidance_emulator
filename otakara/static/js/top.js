@@ -273,6 +273,7 @@ $(function(){
     function closeInner(){
         windowSelectedAns = '';
         innerWindow.fadeOut();
+        $('.ansimg').attr('src','#');
         $('.ansbtn-selected').removeClass('ansbtn-selected');
         $('.new-inner-decide').removeClass('btn-danger');
         $('.new-inner-decide').addClass('btn-outline-secondary');

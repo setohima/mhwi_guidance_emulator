@@ -200,6 +200,12 @@ html{
     z-index:auto;
     pointer-events: auto;
 }
+.ansbtn{
+    width: 75vw;
+}
+.ansbtn img{
+    width: 73vw;
+}
 .ansbtn-selected{
     border: medium solid orange;
 }

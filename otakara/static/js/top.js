@@ -150,9 +150,33 @@ $(function(){
     // 正解を選んだ際にセッション追加
     function pushedSuccess(){
         if(windowArea != ''){
+            console.log('pushedsuccess: '+ windowArea + numAreaQuiz[windowArea]);
+            //正解時時文章があれば設定
+            switch(windowArea){
+                case 'plateau':
+                    if(numAreaQuiz[windowArea] == 0){
+                        $('.new-inner-div').html('<p>【チャーム：かなで族の小さな笛】GET!!</p>');
+                    }else if(numAreaQuiz[windowArea] == 1){
+                        $('.new-inner-div').html('<p>【チャーム：かなで族のスカーフ】GET!!</p>');
+                    }else if(numAreaQuiz[windowArea] == 2){
+                        $('.new-inner-div').html('<p>【チャーム：蒼雷の武器飾り】GET!!</p>');
+                    }
+                    break;
+                case 'frozen':
+                    if(numAreaQuiz[windowArea] == 0){
+                        $('.new-inner-div').html('<p>【家具：獣纏族の三本槍】GET!!</p>');
+                    }else if(numAreaQuiz[windowArea] == 1){
+                        $('.new-inner-div').html('<p>【家具：巨大魚の丸焼き】GET!!</p>');
+                    }
+                    break;
+                default:
+                        $('.new-inner-div').html('');
+                    break;
+            }
+
             // 進捗管理をインクリメント
             numAreaQuiz[windowArea] = numAreaQuiz[windowArea]+1;
-            
+
             // localSessionが利用可能なら進捗保存
             if (isLocalStorageAvlbl() == true){
                 /// localStorageに対応済み

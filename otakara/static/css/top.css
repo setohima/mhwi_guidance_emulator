@@ -224,21 +224,19 @@
     -ms-filter: brightness(1.5);
     filter: brightness(1.5);
 }
-.over-icon {
-    position: absolute;
-    width:11vmax;
-    top: 0;
-    left: 0;
-    margin-top:20px;
-    margin-left:-10px;
-    max-height:100px;
-    max-width: 100px;
+.credit{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color: white;
+    text-align: center;
+    text-shadow: 1px 2px 3px #000000;
 }
 .afterword {
     position: relative;
     background-color: white;
     color: rgb(66, 66, 66);
-    width: 100%;
     margin-top: 20px;
     position: relative;
     text-shadow: 0px 0px 0px #000000;
@@ -254,25 +252,32 @@
 .spacing{
     letter-spacing:-0.2em;
 }
+.afterword .h3{
+    margin-bottom: 0;
+}
 .afterword .icon{
     height: 5em;
 }
 .afterword .twitter-icon{
-    height: 7.2vh;
-    min-height: 24px;
+    width:100%;
+    max-width:120px;
 }
 .afterword .note-icon{
     width: 100%;
     max-width: 200px;
 }
 .afterword .pixiv-icon{
-    width: 44%;
+    width: 66%;
     min-height: 24px;
     min-width: 52px;
 }
 .afterword .job{
-    background: linear-gradient(45deg, white 25% ,gray);
+    background-color: rgb(50,50,50);
+    background-size: auto 100%;
     color: white;
+    margin-bottom:0;
+    padding-top:6.25%;
+    padding-bottom:6.25%;
 }
 @media only screen and (max-width: 1200px) {
     /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */

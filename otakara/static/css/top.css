@@ -222,19 +222,35 @@
     filter: brightness(1.5);
 }
 .afterword {
-    background-color: rgba(102,102,102, 0.5);
-    color: white;
+    background-color: white;
+    color: black;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
     position: relative;
+    text-shadow: 0px 0px 0px #000000;
 }
-.afterword p{
-    margin-bottom: 0px;
+.afterword .no-padding {
+    padding-left:0;
+    padding-right:0;
 }
-.afterword img{
-    width: 100%;
-    min-width: 2em;
-    max-width: 5em;
+.afterword .icon{
+    height: 5em;
+}
+.afterword .twitter-icon{
+    height: 8vh;
+    min-height: 24px;
+}
+.afterword .note-icon{
+    width: 12vw;
+}
+.afterword .pixiv-icon{
+    width: 9vw;
+    min-height: 24px;
+    min-width: 52px;
+}
+.afterword .job{
+    background: linear-gradient(45deg, white ,gray);
+    color: white;
 }
 @media only screen and (max-width: 1200px) {
     /* 横幅が1200px以下の環境をスマホ画面とみなし一部cssを変更する */

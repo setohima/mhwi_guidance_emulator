@@ -13,7 +13,15 @@ $(function(){
     windowSelectedAns = '', // 表示中に選択している回答
     // 進捗管理
     numAreaQuiz = {'forest':0, 'wasteland':0, 'plateau':0, 'valley':0, 'crystal':0, 'frozen':0}, // 0スタート、数値はクリアした問題数;
-    numMaxAreaQuiz = {'forest':1,'wasteland':2,'plateau':3,'valley':3, 'crystal':3, 'frozen':2}, // 全問正解に必要な問題数;
+    numMaxAreaQuiz = {'forest':1,'wasteland':2,'plateau':3,'valley':3, 'crystal':2, 'frozen':2}, // 全問正解に必要な問題数;
+    strAnsAreaQuiz = {
+        'forest': ['A'],
+        'wasteland':['A','A'],
+        'plateau':['A','A','A'],
+        'valley': ['A','A','A'],
+        'crystal':['A','A'],
+        'frozen':['A','A'],
+    };
     strArea = ['forest', 'wasteland', 'plateau', 'valley', 'crystal', 'frozen'];
 
     // ページ読み込み時、localStrageからクリア状況を読み取り反映
@@ -121,15 +129,24 @@ $(function(){
     // 回答表示時のウィンドウ内容切り替え
     function showAnsOf(area){
         windowSpan.text('オタカラの場所の画像を選んでください');
-        if(area == 'forest'){
-            //hoge
+        var tmp = 'jpg'
+        if(area=='wasteland'){
+            tmp = 'png'
         }
+        var src1 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-A.'+tmp,
+            src2 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-B.'+tmp,
+            src3 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-C.'+tmp,
+            src4 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-D.'+tmp;
+        $('#ans1').attr('src',src1);
+        $('#ans2').attr('src',src2);
+        $('#ans3').attr('src',src3);
+        $('#ans4').attr('src',src4);
     }
 
     // 回答選択肢ボタンをクリックした時
-    $('.ansbtn').on('click',function(){
-        windowSelectedAns = $(this).text();
-        $('.ansbtn').removeClass('ansbtn-selected');
+    $('.ansimg').on('click', function(){
+        windowSelectedAns = $(this).attr('src');
+        $('.ansimg').removeClass('ansbtn-selected');
         $(this).addClass('ansbtn-selected');
         windowDecideBtn.removeClass('btn-outline-secondary');
         windowDecideBtn.addClass('btn-danger');
@@ -137,8 +154,15 @@ $(function(){
 
     // 回答決定ボタンをクリックした時
     windowDecideBtn.on('click',function(){
+        console.log('decided');
         if(windowSelectedAns != ''){
-            if(windowSelectedAns == 'success'){
+            console.log('selected is ' + windowSelectedAns);
+            var tmp = 'jpg';
+            if(windowArea=='wasteland'){
+                tmp = 'png';
+            }
+            var tmpCollectAnswer = '/static/image/'+windowArea+'-'+numAreaQuiz[windowArea]+'-'+strAnsAreaQuiz[windowArea][numAreaQuiz[windowArea]]+'.'+tmp;
+            if(windowSelectedAns == tmpCollectAnswer){
                 $('.new-inner-Success').fadeIn();
                 pushedSuccess();
             }else{
@@ -228,6 +252,10 @@ $(function(){
 
     //回答を選び直すボタン
     $('.new-inner-return').on('click',function(){
+        console.log('画像並び順入れ替えロジック実行');
+        $('.ansbtn-selected').removeClass('ansbtn-selected');
+        $('.new-inner-decide').removeClass('btn-danger');
+        $('.new-inner-decide').addClass('btn-outline-secondary');
         $('.new-inner-Failed').fadeOut();
     });
 

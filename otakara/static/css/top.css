@@ -1,9 +1,6 @@
 html{
     font-size: 15px;
 }
-.wrapper{
-    overflow: hidden;
-}
 .img-icon {
     height: 4em;
 }
@@ -158,7 +155,6 @@ html{
     top: 0;
     left: 0;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
     z-index:501;
 }
 .new-inner-Success .new-inner-Failed {

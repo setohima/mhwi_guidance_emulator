@@ -6,5 +6,6 @@ from django.views.decorators.cache import cache_control
 
 urlpatterns = [
     path('', views.top, name='top'),
-    path('sw', (TemplateView.as_view(template_name="sw",content_type='application/javascript', )), name='sw.js'),
+    path('new/',views.new, name='new'),
+    path('sw.js', (TemplateView.as_view(template_name="sw.js",content_type='application/javascript', )), name='otakarasw'),
 ]

@@ -5,8 +5,8 @@
   "background_color": "#dadada",
   "display": "browser",
   "orientation": "portrait",
-  "Scope": "/otakara",
-  "start_url": "/",
+  "Scope": ".",
+  "start_url": "/otakara",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",

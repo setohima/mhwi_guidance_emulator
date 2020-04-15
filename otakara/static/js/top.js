@@ -31,17 +31,14 @@ $(function(){
             strArea.forEach(area => {
                 if(localStorage.getItem(area) != null){
                     numAreaQuiz[area] = parseInt(localStorage.getItem(area));
-                    console.log(numAreaQuiz);
                 }
                 if(numAreaQuiz[area] == numMaxAreaQuiz[area]){
                     showPerfect(area);
                 }else if(numAreaQuiz[area] != 0){
-                    console.log(area+' is not 0')
                     showSuccess(area);
                 }
             });
         }
-        console.log(numAreaQuiz);
     });
 
     // 問題文表示中に画面リサイズすると縦横幅が変わらない不具合に対応
@@ -147,20 +144,28 @@ $(function(){
     // 回答表示時のウィンドウ内容切り替え
     function showAnsOf(area){
         windowSpan.text('オタカラの場所の画像を選んでください');
+        shuffleImages(area);
+    }
+
+    // 回答画像の入れ替え
+    function shuffleImages(area){
         var tmp = 'jpg'
         if(area=='wasteland'){
             tmp = 'png'
         }
-        var src1 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-A.'+tmp,
-            src2 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-B.'+tmp,
-            src3 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-C.'+tmp,
-            src4 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-D.'+tmp;
+        const tmpArray = ['A','B','C','D'];
+        var shuffledArray = shuffle(tmpArray);
+        var src1 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-'+shuffledArray[0]+'.'+tmp,
+            src2 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-'+shuffledArray[1]+'.'+tmp,
+            src3 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-'+shuffledArray[2]+'.'+tmp,
+            src4 = '/static/image/'+area+'-'+numAreaQuiz[area]+'-'+shuffledArray[3]+'.'+tmp;
         $('#ans1').attr('src',src1);
         $('#ans2').attr('src',src2);
         $('#ans3').attr('src',src3);
         $('#ans4').attr('src',src4);
     }
 
+    // プルダウン型選択肢表示
     function showChoiceOf(area){
         if(area=='crystal'){
             if(numAreaQuiz[area]==0){
@@ -192,9 +197,7 @@ $(function(){
 
     // 回答決定ボタンをクリックした時
     windowDecideBtn.on('click',function(){
-        console.log('decided');
         if(windowSelectedAns != ''){
-            console.log('selected is ' + windowSelectedAns);
             var tmp = 'jpg';
             if(windowArea=='wasteland'){
                 tmp = 'png';
@@ -209,9 +212,8 @@ $(function(){
         }
     });
 
-    // 選択型候補ボタンの値が変わった時
+    // プルダウン型選択肢の値が変わった時
     $('.new-inner-choicer').change(function(){
-        console.log('changed');
         if(windowArea=='crystal'){
             switch(numAreaQuiz[windowArea]){
                 case 0:
@@ -239,9 +241,8 @@ $(function(){
         }
     });
 
-    // 選択候補型決定ボタンをクリックした時
+    // プルダウン型決定ボタンをクリックした時
     $('.new-inner-ChoiceDec').on('click',function(){
-        console.log('Choiced');
         if(windowArea=='crystal'){
             switch (numAreaQuiz[windowArea]) {
                 case 0:
@@ -270,7 +271,6 @@ $(function(){
     // 正解を選んだ際にセッション追加
     function pushedSuccess(){
         if(windowArea != ''){
-            console.log('pushedsuccess: '+ windowArea + numAreaQuiz[windowArea]);
             //正解時時文章があれば設定
             switch(windowArea){
                 case 'plateau':
@@ -313,7 +313,6 @@ $(function(){
             }else{
                 showSuccess(windowArea);
             }
-            console.log(numAreaQuiz);
         }else{
             console.error('windowArea is none');
         }
@@ -321,7 +320,6 @@ $(function(){
 
     // 全問正解時処理
     function showPerfect(area){
-        console.log(area);
         $('#'+area+'Btn').text('▷');
         $('#'+area+'Hidden').hide('fast', function(){
             $('.'+area+' .mark-success').show('fast');
@@ -334,7 +332,6 @@ $(function(){
     function showSuccess(area){
         //全問正解してたら処理飛ばす
         if(numAreaQuiz[area] == numMaxAreaQuiz[area]){
-            console.log('success but perfect');
             showPerfect();
             return;
         }
@@ -348,7 +345,7 @@ $(function(){
 
     //回答を選び直すボタン
     $('.new-inner-return').on('click',function(){
-        console.log('画像並び順入れ替えロジック実行');
+        shuffleImages(windowArea);
         $('.ansbtn-selected').removeClass('ansbtn-selected');
         $('.new-inner-decide').removeClass('btn-danger');
         $('.new-inner-decide').addClass('btn-outline-secondary');
@@ -382,7 +379,6 @@ $(function(){
     
     //りせっとぼたん
     $('.btn-reset').on('click',function(){
-        console.log('reset');
         numAreaQuiz = {'forest':0, 'wasteland':0, 'plateau':0, 'valley':0, 'crystal':0, 'frozen':0};
         if(isLocalStorageAvlbl() == true){
             strArea.forEach(area => {
@@ -414,3 +410,11 @@ function isLocalStorageAvlbl(){
         return false;
     }
 }
+
+const shuffle = ([...array]) => {
+    for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }

@@ -95,6 +95,13 @@ $(function(){
             case 'forest':
                 $('.new-inner-div').html('<p>本編にも登場した「滝隠し洞窟」から、滝の水源を上流へと辿って行くと…？</p><img src="/static/image/forest-1-Hint.jpg" class="forest-1-hint image-hint" />');
                 break;
+            case 'wasteland':
+                if(numAreaQuiz[area] == 0){
+                    $('.new-inner-div').html('<p>キノコは他部族とのぶつぶつ交換に使う予定だった。シビれる旨さが病みつきなのだという。</p>');
+                }else if(numAreaQuiz[area] == 1){
+                    $('.new-inner-div').html('<p>「石頭の竜」は泥に潜って眠る…見たことがあるか？</p>');
+                }
+                break;
             case 'valley':
                 if(numAreaQuiz[area] == 0){
                     $('.new-inner-div').html('<p>ドスギルオスの住処</p>');
@@ -111,6 +118,13 @@ $(function(){
                     $('.new-inner-div').html('<p>「ゲコゲコ」は触ると危ない。眠くなるのとシビれて動けなくなるのがいる。ぶつかりそうだったのはシビれるほう。「パチパチの実」は赤くて、ちょっと叩くとすぐに地面に落ちてくる。</p>');
                 }else if(numAreaQuiz[area] == 2){
                     $('.new-inner-div').html('<p>「空飛ぶ謎の家」はチョウサダンの船だって仲間が言ってたな。キネンヒンの近くには赤い実がなってる草と、ピカピカ虫もいたっけ。それと、ドデカピンク竜は毒を持ってるから気を付けること。</p>');
+                }
+                break;
+            case 'crystal':
+                if(numAreaQuiz[area] == 0){
+                    $('.new-inner-div').html('<p>そこは知恵の神の地だ。</p>');
+                }else if(numAreaQuiz[area] == 1){
+                    $('.new-inner-div').html('<p>我々が名付けた「隠されし王の道」は、炎の龍が姿を現わす時にだけ開かれる。</p>');
                 }
                 break;
             case 'frozen':

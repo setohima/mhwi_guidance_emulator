@@ -9,9 +9,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="manifest" href="{% static 'manifest.json' %}">
         <script>
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('sw.js').then(function() { console.log('Service Worker Registered'); });
-            }
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("{% url 'sw.js' %}") //note that I am using the url template here
+            .then(function(reg){
+            }).catch(function(err) {
+            console.log("No it didn't. This happened:", err)
+                console.log("err.message:", err.message)
+            });
+        }
         </script>
         <script>
             (function(d) {

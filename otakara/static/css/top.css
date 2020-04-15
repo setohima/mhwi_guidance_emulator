@@ -197,10 +197,10 @@ html{
     pointer-events: auto;
 }
 .ansbtn{
-    width: 75vw;
+    width: 100%;
 }
 .ansbtn img{
-    width: 70vw;
+    width: 100%;
 }
 .ansbtn-selected{
     border: medium solid orange;

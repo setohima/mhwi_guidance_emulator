@@ -38,6 +38,14 @@ $(function(){
                     showSuccess(area);
                 }
             });
+            if(numAreaQuiz['forest'] == numMaxAreaQuiz['forest']
+            && numAreaQuiz['wasteland'] == numMaxAreaQuiz['wasteland']
+            && numAreaQuiz['plateau'] == numMaxAreaQuiz['plateau']
+            && numAreaQuiz['valley'] == numMaxAreaQuiz['valley']
+            && numAreaQuiz['crystal'] == numMaxAreaQuiz['crystal']
+            &&numAreaQuiz['forest'] == numMaxAreaQuiz['forest']){
+                $('.allPerfect').css('display','block');
+            }
         }
     });
 
@@ -313,6 +321,15 @@ $(function(){
             }else{
                 showSuccess(windowArea);
             }
+
+            if(numAreaQuiz['forest'] == numMaxAreaQuiz['forest']
+            && numAreaQuiz['wasteland'] == numMaxAreaQuiz['wasteland']
+            && numAreaQuiz['plateau'] == numMaxAreaQuiz['plateau']
+            && numAreaQuiz['valley'] == numMaxAreaQuiz['valley']
+            && numAreaQuiz['crystal'] == numMaxAreaQuiz['crystal']
+            &&numAreaQuiz['forest'] == numMaxAreaQuiz['forest']){
+                $('.allPerfect').css('display','block');
+            }
         }else{
             console.error('windowArea is none');
         }
@@ -389,6 +406,7 @@ $(function(){
         $('.perfect').hide('fast');
         $('.show-window').show('fast');
         adjust();
+        location.href = 'https://www.setohima.work/otakara';
     });
 });
 

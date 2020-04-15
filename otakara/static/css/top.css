@@ -232,6 +232,9 @@ html{
 #choice3{
     display:none;
 }
+.allPerfect{
+    display:none;
+}
 .credit{
     background-position: center;
     background-repeat: no-repeat;

@@ -229,6 +229,9 @@ html{
     -ms-filter: brightness(1.5);
     filter: brightness(1.5);
 }
+#choice3{
+    display:none;
+}
 .credit{
     background-position: center;
     background-repeat: no-repeat;

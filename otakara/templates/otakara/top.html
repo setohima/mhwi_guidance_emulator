@@ -402,7 +402,7 @@
                                     <button type="button" id="crystalHintBtn" area="crystal" func="Hint" class="btn btn-block show-window">ヒントを見る</button>
                                 </div>
                                 <div class="col-12 col-xl-8">
-                                    <button type="button" id="crystalAnsBtn" area="crystal" func="Ans" class="btn btn-block show-window">この小問の答え合わせをする</button>
+                                    <button type="button" id="crystalAnsBtn" area="crystal" func="Choice" class="btn btn-block show-window">この小問の答え合わせをする</button>
                                 </div>
                             </div>
                         </div>
@@ -608,6 +608,46 @@
                         </div>
                         <button class="new-inner-close new-inner-btn btn btn-dark">戻る</button>
                         <button class="new-inner-decide new-inner-btn btn btn-outline-secondary">決定</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="new-inner-Choice new-inner-window">
+                <div class="new-inner-overlay"></div>
+                <div class="new-inner-body">
+                <div class="new-inner-main">
+                    <div class="new-inner-content">
+                        <p class="new-inner-text"><span>あなたがたどり着いたのは</span></p>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <select class="new-inner-choicer" name="choice1" id="choice1">
+                                        <option value="0">選択してください</option>
+                                        <option value="1">エリア2の</option>
+                                        <option value="2">エリア3の</option>
+                                        <option value="3">エリア4の</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <select class="new-inner-choicer" name="choice2" id="choice2">
+                                        <option value="0">選択してください</option>
+                                        <option value="1">北</option>
+                                        <option value="2">中央</option>
+                                        <option value="3">西</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <select class="new-inner-choicer" name="choice3" id="choice3">
+                                        <option value="0">選択してください</option>
+                                        <option value="1">龍殺しの実</option>
+                                        <option value="2">ハリの実</option>
+                                        <option value="3">ケムリの実</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="new-inner-close new-inner-btn btn btn-dark">戻る</button>
+                        <button class="new-inner-ChoiceDec new-inner-btn btn btn-outline-secondary">決定</button>
                     </div>
                 </div>
                 </div>

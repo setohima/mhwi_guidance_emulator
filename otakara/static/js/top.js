@@ -5,6 +5,7 @@ $(function(){
     // モーダル用
     innerHintWindow = $('.new-inner-Hint'),
     innerAnsWindow = $('.new-inner-Ans'),
+    innerChoiceWindow = $('.new-inner-Choice'),
     innerWindow = $('.new-inner-window'),
     windowDecideBtn = $('.new-inner-decide'),
     windowSpan = $('.new-inner-text span'),
@@ -85,6 +86,9 @@ $(function(){
             // 回答画面内容切り替え用関数
             showAnsOf(windowArea);
             innerAnsWindow.fadeIn();
+        }else if(windowFunc == 'Choice'){
+            showChoiceOf(windowArea);
+            innerChoiceWindow.fadeIn();
         }
     });
 
@@ -157,6 +161,26 @@ $(function(){
         $('#ans4').attr('src',src4);
     }
 
+    function showChoiceOf(area){
+        if(area=='crystal'){
+            if(numAreaQuiz[area]==0){
+                $('.new-inner-Choice .new-inner-text').text('場所を示す単語の正しい組み合わせを選んでください');
+            }else if(numAreaQuiz[area]==1){
+                $('.new-inner-Choice .new-inner-text').text('あなたがたどり着いたのは');
+                $('#choice1').empty();
+                $('#choice1').append($('<option>').val('0').text('選択してください'));
+                $('#choice1').append($('<option>').val('1').text('天井のある場所の'));
+                $('#choice1').append($('<option>').val('2').text('天井のない場所の'));
+                $('#choice2').empty();
+                $('#choice2').append($('<option>').val('0').text('選択してください'));
+                $('#choice2').append($('<option>').val('1').text('段差の上にある'));
+                $('#choice2').append($('<option>').val('2').text('段差の下にある'));
+                $('#choice2').append($('<option>').val('3').text('坂道にある'));
+                $('#choice3').css('display','inline');
+            }
+        }
+    }
+
     // 回答選択肢ボタンをクリックした時
     $('.ansimg').on('click', function(){
         windowSelectedAns = $(this).attr('src');
@@ -181,6 +205,64 @@ $(function(){
                 pushedSuccess();
             }else{
                 $('.new-inner-Failed').fadeIn();
+            }
+        }
+    });
+
+    // 選択型候補ボタンの値が変わった時
+    $('.new-inner-choicer').change(function(){
+        console.log('changed');
+        if(windowArea=='crystal'){
+            switch(numAreaQuiz[windowArea]){
+                case 0:
+                    if($('#choice1').val()!='0' && $('#choice2').val()!='0'){
+                        $('.new-inner-ChoiceDec').removeClass('btn-outline-secondary');
+                        $('.new-inner-ChoiceDec').addClass('btn-danger');
+                    }else{
+                        $('.new-inner-ChoiceDec').removeClass('btn-danger');
+                        $('.new-inner-ChoiceDec').addClass('btn-outline-secondary');
+                    }
+                    break;
+                case 1:
+                    if($('#choice1').val()!='0'&&$('#choice2').val()!='0'&&$('#choice3').val()!='0'){
+                        $('.new-inner-ChoiceDec').removeClass('btn-outline-secondary');
+                        $('.new-inner-ChoiceDec').addClass('btn-danger');
+                    }else{
+                        $('.new-inner-ChoiceDec').removeClass('btn-danger');
+                        $('.new-inner-ChoiceDec').addClass('btn-outline-secondary');
+                    }
+                    break;
+                default:
+                    console.error('choicerError');
+                    break;
+            }
+        }
+    });
+
+    // 選択候補型決定ボタンをクリックした時
+    $('.new-inner-ChoiceDec').on('click',function(){
+        console.log('Choiced');
+        if(windowArea=='crystal'){
+            switch (numAreaQuiz[windowArea]) {
+                case 0:
+                    if($('#choice1').val()=='3'&&$('#choice2').val()=='3'){
+                        $('.new-inner-Success').fadeIn();
+                        pushedSuccess();
+                    }else{
+                        $('.new-inner-Failed').fadeIn();
+                    }
+                    break;
+                case 1:
+                    if($('#choice1').val()=='1'&&$('#choice2').val()=='3'&&$('#choice3').val()=='2'){
+                        $('.new-inner-Success').fadeIn();
+                        pushedSuccess();
+                    }else{
+                        $('.new-inner-Failed').fadeIn();
+                    }
+                    break;
+                default:
+                    console.error('choiceError');
+                    break;
             }
         }
     });
@@ -290,7 +372,12 @@ $(function(){
         $('.ansimg').attr('src','#');
         $('.ansbtn-selected').removeClass('ansbtn-selected');
         $('.new-inner-decide').removeClass('btn-danger');
+        $('.new-inner-ChoiceDec').removeClass('btn-danger');
         $('.new-inner-decide').addClass('btn-outline-secondary');
+        $('.new-inner-ChoiceDec').addClass('btn-outline-secondary');
+        $('#choice1 option:first').prop('selected', true);
+        $('#choice2 option:first').prop('selected', true);
+        $('#choice3 option:first').prop('selected', true);
     }
     
     //りせっとぼたん

@@ -43,7 +43,7 @@ $(function(){
             && numAreaQuiz['plateau'] == numMaxAreaQuiz['plateau']
             && numAreaQuiz['valley'] == numMaxAreaQuiz['valley']
             && numAreaQuiz['crystal'] == numMaxAreaQuiz['crystal']
-            &&numAreaQuiz['forest'] == numMaxAreaQuiz['forest']){
+            && numAreaQuiz['frozen'] == numMaxAreaQuiz['frozen']){
                 $('.allPerfect').css('display','block');
             }
         }
@@ -327,7 +327,7 @@ $(function(){
             && numAreaQuiz['plateau'] == numMaxAreaQuiz['plateau']
             && numAreaQuiz['valley'] == numMaxAreaQuiz['valley']
             && numAreaQuiz['crystal'] == numMaxAreaQuiz['crystal']
-            &&numAreaQuiz['forest'] == numMaxAreaQuiz['forest']){
+            && numAreaQuiz['frozen'] == numMaxAreaQuiz['frozen']){
                 $('.allPerfect').css('display','block');
             }
         }else{
